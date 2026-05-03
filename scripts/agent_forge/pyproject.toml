@@ -1,6 +1,6 @@
 [project]
 name = "agent-forge"
-version = "0.1.0-dev"
+version = "1.0.0"
 description = "Cross-CLI plugin marketplace installer for agent-forge"
 authors = [{ name = "Rahul N Akmol", email = "rahulnakmol@gmail.com" }]
 license = { text = "BSD-3-Clause" }

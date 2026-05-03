@@ -45,7 +45,7 @@ The marketplace ships natively for Claude Code and GitHub Copilot CLI, ships wit
 | # | Decision | Rationale |
 |---|---|---|
 | D1 | Author canonical content in Claude Code format under `plugins/<name>/` | Matches existing reference repo; primary CLI; richest format. |
-| D2 | Tier model: 1 (native) / 2 (adapter) / 3a (filesystem loader) / 3b (prompt loader) | Honest grouping by mechanism; sets user expectations. |
+| D2 | Tier model: 1 (native marketplace) / 2 (lightweight adapter) / 3 (prompt loader) | Honest grouping by mechanism; sets user expectations. (Tier 3a "filesystem loader" eliminated as a v1.0 category — Codex and Cursor both gained native marketplaces; remaining 3a candidates Aider/Amp deferred to v1.1.) |
 | D3 | Distribution: bash one-liners + optional `agent-forge` Python CLI (pipx) | Zero-build for agent-install path; clean UX for humans. Python matches existing scripts. |
 | D4 | Versioning: SHA-based with optional semver tags | Truthful by construction; tags layered for stable channels. |
 | D5 | Local manifest (`~/.agent-forge/manifest.json`) drives update propagation | Single source of state; replays operation log on corruption. |
@@ -54,9 +54,11 @@ The marketplace ships natively for Claude Code and GitHub Copilot CLI, ships wit
 | D8 | Design specs + implementation plans live on orphan branch `superpowers`; never merged to `main` | Keeps `main` clean; preserves design history; CI guard rejects accidental merges. |
 | D9 | KPMG plugin and all proprietary content excluded; verified by `test_no_kpmg_residue.py` | Public repo cannot contain proprietary brand assets. |
 | D10 | DCO over CLA | Lighter-weight contributor friction; sufficient for BSD. |
-| D11 | v1.0.0 ships 6 CLI adapters + 3 prompt-tool loaders; Aider/Amp deferred to v1.1 | Plugin formats for Aider/Amp not stable enough for a v1.0 commitment. |
-| D12 | Public schemas (Claude `marketplace.json`, Copilot `marketplace.json`, `~/.agent-forge/manifest.json`, CLI surface, install-URL pattern) frozen at v1.0.0 | After v1.0, breaking changes require v2.0.0. |
-| D13 | Copilot CLI is supported as a **first-class native marketplace** (not as `.github/prompts/` file conventions) | Copilot CLI launched its own plugin marketplace mechanism in 2026 — structurally near-identical to Claude Code's. Same UX, same schema family, same install ergonomics. |
+| D11 | v1.0.0 ships **4 native marketplaces + 2 lightweight adapters + 3 prompt-tool loaders**; Aider/Amp deferred to v1.1 | Plugin formats for Aider/Amp not stable enough for a v1.0 commitment. |
+| D12 | Public schemas frozen at v1.0.0: Claude `marketplace.json`, Copilot `marketplace.json`, Codex `marketplace.json`, Cursor `marketplace.json`, per-plugin manifests for all four, `~/.agent-forge/manifest.json`, CLI surface, install-URL pattern | After v1.0, breaking changes require v2.0.0. |
+| D13 | Copilot CLI, Codex CLI, and Cursor are all supported as **first-class native marketplaces** (not as file-convention adapters) | All three launched native plugin marketplaces in 2026 (Copilot CLI: 2026; Codex v0.128.0: April 2026; Cursor 2.5: February 2026). Schemas are structurally near-identical to Claude Code's. Same UX, same install ergonomics. |
+| D14 | Skills follow the **agentskills.io open standard** — `SKILL.md` with `name` + `description` frontmatter, `references/`, `scripts/`, `assets/` for progressive disclosure | This format is now native to Claude Code, Cursor, Codex, OpenCode, Kilo Code. Authoring once produces skills portable to all five with zero per-CLI translation. |
+| D15 | Tier 2 adapters (Kilo Code, OpenCode) are **trivially small** because both CLIs natively read `.claude/skills/`, `.claude/agents/`, `.claude/commands/` as fallbacks | Discovery priority is `.opencode/* → .claude/* → .agents/*` (or `.kilo/* → .claude/* → .agents/*`). Often "install for OpenCode/Kilo" reduces to "make sure Claude install is in place" — possibly a no-op. |
 
 ## 3. Repository Layout
 
@@ -66,8 +68,12 @@ agent-forge/
 │   └── marketplace.json                    Tier 1: Claude Code marketplace manifest (canonical)
 ├── .github/
 │   ├── plugin/
-│   │   └── marketplace.json                Tier 1: Copilot CLI marketplace manifest (translator-generated from canonical)
+│   │   └── marketplace.json                Tier 1: Copilot CLI marketplace manifest (translator-generated)
 │   ├── CODEOWNERS
+├── .codex-plugin/
+│   └── marketplace.json                    Tier 1: Codex CLI marketplace manifest (translator-generated)
+├── .cursor-plugin/
+│   └── marketplace.json                    Tier 1: Cursor marketplace manifest (translator-generated)
 │   ├── PULL_REQUEST_TEMPLATE/
 │   │   ├── plugin.md
 │   │   ├── skill.md
@@ -81,18 +87,21 @@ agent-forge/
 │
 ├── plugins/                                Canonical source of truth (authored in Claude Code format)
 │   ├── writing/
-│   │   ├── .claude-plugin/plugin.json      Claude Code manifest (canonical)
-│   │   ├── plugin.json                     Copilot CLI manifest (translator-generated, committed)
+│   │   ├── .claude-plugin/plugin.json      Claude Code manifest (canonical, hand-authored)
+│   │   ├── plugin.json                     Copilot CLI manifest (translator-generated)
+│   │   ├── .codex-plugin/plugin.json       Codex CLI manifest (translator-generated)
+│   │   ├── .cursor-plugin/plugin.json      Cursor manifest (translator-generated)
 │   │   ├── README.md
-│   │   ├── skills/<name>/
-│   │   │   ├── SKILL.md                    Works for both Claude and Copilot as-is
+│   │   ├── skills/<name>/                  agentskills.io standard — works as-is in Claude/Cursor/Codex/OpenCode/Kilo
+│   │   │   ├── SKILL.md                    Frontmatter: name + description (cross-CLI portable)
 │   │   │   ├── references/                 Loaded only when SKILL.md instructs (progressive disclosure)
 │   │   │   ├── scripts/
 │   │   │   └── assets/
 │   │   ├── agents/
-│   │   │   ├── <name>.md                   Claude Code convention (canonical)
-│   │   │   └── <name>.agent.md             Copilot CLI convention (translator-generated symlink/copy)
-│   │   └── commands/
+│   │   │   ├── <name>.md                   Claude Code + Cursor + OpenCode + Kilo (Markdown frontmatter)
+│   │   │   ├── <name>.agent.md             Copilot CLI mirror (translator-generated symlink/copy)
+│   │   │   └── <name>.toml                 Codex CLI subagent (translator-generated; converts MD frontmatter → TOML)
+│   │   └── commands/                       Slash commands (Codex skipped — Codex deprecated custom commands in favor of skills)
 │   ├── prompts/
 │   ├── msft-arch/
 │   └── pm/
@@ -109,11 +118,11 @@ agent-forge/
 │   │   │   ├── _base.py                    Translator Protocol + helpers
 │   │   │   ├── claude_code.py              Tier 1 — mostly no-op; canonical format already
 │   │   │   ├── copilot_cli.py              Tier 1 — generates .github/plugin/marketplace.json + per-plugin plugin.json + agent .agent.md mirrors
-│   │   │   ├── kilocode.py                 Tier 2
-│   │   │   ├── opencode.py                 Tier 2
-│   │   │   ├── codex.py                    Tier 3a
-│   │   │   ├── cursor.py                   Tier 3a
-│   │   │   └── prompt_loader.py            Tier 3b — generates loader for Perplexity/GPTs/Projects
+│   │   │   ├── codex_cli.py                Tier 1 — generates .codex-plugin/marketplace.json + per-plugin plugin.json + agent .toml conversions; skips commands (Codex deprecated custom prompts)
+│   │   │   ├── cursor.py                   Tier 1 — generates .cursor-plugin/marketplace.json + per-plugin plugin.json; skills/agents/commands stay in canonical Claude format (Cursor reads them as-is)
+│   │   │   ├── kilocode.py                 Tier 2 — trivial adapter (Kilo reads .claude/* natively)
+│   │   │   ├── opencode.py                 Tier 2 — trivial adapter (OpenCode reads .claude/* natively)
+│   │   │   └── prompt_loader.py            Tier 3 — generates loader for Perplexity/GPTs/Projects
 │   │   └── pyproject.toml
 │   ├── install-claude-code.sh              Bash one-liner shims that delegate to the CLI
 │   ├── install-copilot-cli.sh
@@ -201,16 +210,18 @@ agent-forge/
 ### CI-enforced invariants
 
 1. `.claude-plugin/marketplace.json` only references paths under `plugins/<name>`.
-2. `.github/plugin/marketplace.json` declares the **same plugin set** (and matching versions) as `.claude-plugin/marketplace.json`. The Copilot manifest is auto-generated; CI fails if the committed file is stale.
-3. Every plugin has BOTH `plugins/<name>/.claude-plugin/plugin.json` (Claude) AND `plugins/<name>/plugin.json` (Copilot). The Copilot one is auto-generated; CI fails if stale.
-4. Every plugin's `agents/<name>.md` (Claude) has a corresponding `agents/<name>.agent.md` (Copilot — symlink or auto-generated copy).
+2. **All four marketplace manifests declare the same plugin set + matching versions:** `.claude-plugin/marketplace.json` (canonical), `.github/plugin/marketplace.json` (Copilot), `.codex-plugin/marketplace.json` (Codex), `.cursor-plugin/marketplace.json` (Cursor). The latter three are auto-generated; CI fails if any committed file is stale relative to the canonical.
+3. **Every plugin has FOUR manifest files:** `.claude-plugin/plugin.json` (canonical), `plugin.json` (Copilot), `.codex-plugin/plugin.json` (Codex), `.cursor-plugin/plugin.json` (Cursor). The latter three are auto-generated; CI fails if stale.
+4. Every plugin's `agents/<name>.md` (Claude/Cursor/OpenCode/Kilo) has a corresponding `agents/<name>.agent.md` (Copilot mirror) AND `agents/<name>.toml` (Codex translation). All three derived files auto-generated; CI fails if stale.
 5. No `install-*.sh` script reads from `tests/`, `docs/`, or `scripts/agent_forge/translators/`.
 6. Every `plugins/<name>/.claude-plugin/plugin.json` validates against Claude Code's published schema.
 7. Every `plugins/<name>/plugin.json` validates against Copilot CLI's plugin.json schema.
-8. Every `SKILL.md` has valid frontmatter (`name`, `description`); `name` ≤ 64 chars.
-9. Every reference linked from a `SKILL.md` body resolves to an actual file on disk.
-10. PRs to `main` whose diff touches `docs/superpowers/**` are rejected.
-11. No file path or string under `plugins/` references "kpmg" (case-insensitive).
+8. Every `plugins/<name>/.codex-plugin/plugin.json` validates against Codex CLI's plugin.json schema.
+9. Every `plugins/<name>/.cursor-plugin/plugin.json` validates against Cursor's plugin.json schema.
+10. Every `SKILL.md` has valid frontmatter (`name`, `description`); `name` ≤ 64 chars; matches the agentskills.io open spec.
+11. Every reference linked from a `SKILL.md` body resolves to an actual file on disk.
+12. PRs to `main` whose diff touches `docs/superpowers/**` are rejected.
+13. No file path or string under `plugins/` references "kpmg" (case-insensitive).
 
 ### Branch separation
 
@@ -259,18 +270,18 @@ The `agent-forge install <plugin>` command dispatches to the right translator an
 | CLI | Tier | Detect by | Target install path | Status at v1.0.0 |
 |---|---|---|---|---|
 | Claude Code | 1 | `claude` binary on `$PATH` or `~/.claude/` | Native — `claude plugin marketplace add github:rahulnakmol/agent-forge`; reads `.claude-plugin/marketplace.json` | Native, fully supported |
-| GitHub Copilot CLI | 1 | `copilot` binary on `$PATH` or `~/.copilot/` | Native — `copilot plugin marketplace add rahulnakmol/agent-forge`; reads `.github/plugin/marketplace.json` (translator-generated mirror of canonical) | Native, fully supported |
-| Kilo Code | 2 | `kilocode` binary or `.kilocode/` directory | `.kilocode/rules/<plugin>/*.md` (skill bodies as rules) + `.kilocode/modes/<plugin>.yaml` (agents as custom modes) | Adapter + integration test |
-| OpenCode | 2 | `opencode` binary or `~/.config/opencode/` | `~/.config/opencode/agent/<name>.md` + `~/.config/opencode/command/<name>.md` (per-project AND global supported via flag) | Adapter + integration test |
-| Codex (OpenAI) | 3a | `codex` binary or `AGENTS.md` in cwd | `AGENTS.md` (root) + sub-files referenced via include | Adapter + integration test |
-| Cursor | 3a | `cursor` binary or `.cursor/` directory | `.cursor/rules/<plugin>/*.md` | Adapter + integration test |
-| Aider | 3a | `aider` on `$PATH` or `.aider.conf.yml` | `~/.aider/conventions/<plugin>.md` | **Deferred to v1.1** — plugin model not stable enough |
-| Amp (Sourcegraph) | 3a | `amp` binary | N/A at v1.0 (translator stub returns "not yet supported") | **Deferred to v1.1** — needs format research |
-| Perplexity Spaces | 3b | User-asserted (no detection possible) | N/A — `agent-forge install <plugin> --target perplexity` prints loader to stdout | Loader generator + paste-ready guide |
-| ChatGPT custom GPTs | 3b | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
-| Claude.ai Projects | 3b | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
+| GitHub Copilot CLI | 1 | `copilot` binary on `$PATH` or `~/.copilot/` | Native — `copilot plugin marketplace add rahulnakmol/agent-forge`; reads `.github/plugin/marketplace.json` (translator-generated mirror) | Native, fully supported |
+| Codex CLI (OpenAI) | 1 | `codex` binary on `$PATH` or `~/.codex/` | Native — `codex plugin marketplace add rahulnakmol/agent-forge`; reads `.codex-plugin/marketplace.json` (translator-generated mirror). Marketplace launched GA in v0.128.0 (Apr 2026). | Native, fully supported |
+| Cursor | 1 | `cursor` binary on `$PATH` or `.cursor/` directory | Native — `/add-plugin` slash command in editor or one-click from `cursor.com/marketplace`; reads `.cursor-plugin/marketplace.json` (translator-generated mirror). Plugin system launched in 2.5 (Feb 2026). | Native, fully supported |
+| Kilo Code | 2 | `kilo` binary or `.kilo/` directory | **Trivially small adapter** — Kilo natively reads `.claude/skills/`, `.claude/agents/` from the user's Claude install. If Claude install exists, no-op. Otherwise, copy plugin tree to `~/.claude/skills/<plugin>/` (Kilo finds it via fallback). | Adapter + integration test |
+| OpenCode | 2 | `opencode` binary or `~/.config/opencode/` | **Trivially small adapter** — OpenCode reads `.claude/skills/`, `.claude/agents/`, `.claude/commands/` as fallbacks. Same logic as Kilo: no-op if Claude install exists; otherwise copy to `~/.claude/`. Optional: also write `opencode.json` `"plugin"` array entry if user opts into npm distribution. | Adapter + integration test |
+| Aider | 3a | `aider` on `$PATH` or `.aider.conf.yml` | N/A at v1.0 | **Deferred to v1.1** — no marketplace, no agentskills support |
+| Amp (Sourcegraph) | 3a | `amp` binary | N/A at v1.0 | **Deferred to v1.1** — no marketplace, no agentskills support |
+| Perplexity Spaces | 3 | User-asserted (no detection possible) | N/A — `agent-forge install <plugin> --target perplexity` prints loader to stdout | Loader generator + paste-ready guide |
+| ChatGPT custom GPTs | 3 | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
+| Claude.ai Projects | 3 | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
 
-**v1.0.0 totals: 6 CLIs with adapters/native + 3 prompt-tool loaders = 9 install targets.**
+**v1.0.0 totals: 4 native marketplaces + 2 lightweight adapters + 3 prompt-tool loaders = 9 install targets** — but with much higher fidelity than the original design (was 2 native + 4 file-convention adapters).
 
 ### The Tier 3b loader template
 
@@ -665,13 +676,14 @@ The `superpowers` orphan branch has been created and pushed. Worktree at `../age
    - Layer A tests passing on all 4 plugins
    - Verify `claude plugin marketplace add file://./` → install + invoke each plugin
 
-3. **Phase 2 — All 6 translators built**
-   - Tier 1: Copilot CLI (writes `.github/prompts/`, `copilot-instructions.md`)
-   - Tier 2: Kilo Code translator
-   - Tier 2: OpenCode translator
-   - Tier 3a: Codex translator
-   - Tier 3a: Cursor translator
-   - Tier 3b: Prompt-loader generator (one generator → 3 prompt tools)
+3. **Phase 2 — All translators built (4 native + 2 adapter + 1 loader generator)**
+   - Tier 1: Copilot CLI translator — generates `.github/plugin/marketplace.json` + per-plugin `plugin.json` + agent `.agent.md` mirrors
+   - Tier 1: Codex CLI translator — generates `.codex-plugin/marketplace.json` + per-plugin `plugin.json` + agent TOML conversions; skips commands
+   - Tier 1: Cursor translator — generates `.cursor-plugin/marketplace.json` + per-plugin `plugin.json`; skills/agents/commands stay in canonical format
+   - Tier 2: Kilo Code adapter — minimal; relies on Kilo's `.claude/skills/` fallback
+   - Tier 2: OpenCode adapter — minimal; relies on OpenCode's `.claude/*` fallback
+   - Tier 3: Prompt-loader generator (one generator → 3 prompt tools)
+   - Phase 2 spikes: cross-tool `.agents/` namespace; single-manifest-for-multiple-ecosystems; symlink vs. copy on Windows; Codex TOML field-mapping fidelity
 
 4. **Phase 3 — Full `agent-forge` CLI surface**
    - All 11 commands, manifest read/write, atomic update flow
@@ -703,9 +715,12 @@ The `superpowers` orphan branch has been created and pushed. Worktree at `../age
 
 These become public APIs — breaking changes require v2.0.0:
 
-- Claude Code `.claude-plugin/marketplace.json` schema (already follows Claude Code's published schema)
+- Claude Code `.claude-plugin/marketplace.json` schema (follows Claude Code's published schema)
 - Copilot CLI `.github/plugin/marketplace.json` schema (follows GitHub's published Copilot CLI schema)
-- Per-plugin `.claude-plugin/plugin.json` (Claude) AND `plugin.json` (Copilot) schemas
+- Codex CLI `.codex-plugin/marketplace.json` schema (follows OpenAI's published Codex CLI schema)
+- Cursor `.cursor-plugin/marketplace.json` schema (follows Cursor's published plugin schema)
+- Per-plugin manifests for all four (`.claude-plugin/plugin.json`, `plugin.json`, `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json`)
+- Skill format: agentskills.io-compatible `SKILL.md` with `name` + `description` frontmatter
 - `~/.agent-forge/manifest.json` schema (`schema_version: 1`)
 - `agent-forge` CLI command surface + flags
 - The install-URL pattern: `https://raw.githubusercontent.com/rahulnakmol/agent-forge/main/docs/install/<plugin-or-skill>.md`
@@ -715,15 +730,25 @@ These become public APIs — breaking changes require v2.0.0:
 
 These are blockers before the v1.0.0 tag, but do not block the implementation plan:
 
-- ~~Exact current GitHub Copilot CLI slash-command path convention~~ **RESOLVED 2026-05-03** — Copilot CLI now has a first-class plugin marketplace at `.github/plugin/marketplace.json`. Per-plugin manifest at `plugin.json` (plugin root). See https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace
-- **NEW:** Does Copilot CLI's `.claude-plugin/` fallback location read a Claude-format `marketplace.json` as-is, or does it require Copilot's nested `metadata` schema? If as-is, we may be able to ship a single marketplace.json that satisfies both ecosystems. Phase 2 spike: test installing our Claude `marketplace.json` via `copilot plugin marketplace add` and observe behavior.
-- **NEW:** Confirm whether Copilot CLI's `<name>.agent.md` convention can be satisfied via symlink (cross-platform concern; symlinks are awkward on Windows) or whether translator must commit duplicate copies. Decision needed in Phase 2.
-- OpenCode v0.4+ global vs. per-project config split conventions (verify in Phase 2).
-- Codex CLI's current `AGENTS.md` include syntax + MCP integration path (verify in Phase 2).
-- Cursor 0.50+ skill/rule capability — has it added a "skill" concept beyond `.cursor/rules/`? (verify in Phase 2).
+### Resolved during design (2026-05-03 research pass)
+
+- ~~Exact current GitHub Copilot CLI slash-command path convention~~ **RESOLVED** — Copilot CLI has a first-class plugin marketplace at `.github/plugin/marketplace.json`. Per-plugin manifest at `plugin.json` (plugin root). [Docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)
+- ~~Codex CLI plugin model~~ **RESOLVED** — Codex shipped a plugin marketplace GA in v0.128.0 (April 2026). Marketplace at `.agents/plugins/marketplace.json` or `~/.agents/plugins/marketplace.json`; per-plugin at `<root>/.codex-plugin/plugin.json`; subagents as TOML at `.codex/agents/<name>.toml`; skills at `.agents/skills/<name>/SKILL.md` (Anthropic-compatible). Custom prompts (`~/.codex/prompts/`) deprecated — migrate to skills. [Docs](https://developers.openai.com/codex/plugins)
+- ~~Cursor plugin/skill capability~~ **RESOLVED** — Cursor 2.5 (Feb 2026) launched a plugin system; Cursor 3.0 (Apr 2026) expanded it. Plugin manifest at `<plugin>/.cursor-plugin/plugin.json`; marketplace registry at `<repo>/.cursor-plugin/marketplace.json`; skills at `.cursor/skills/<name>/SKILL.md` (Anthropic-compatible). Install via `/add-plugin` slash command or `cursor.com/marketplace`. [Docs](https://cursor.com/docs/plugins)
+- ~~OpenCode v0.4+ paths~~ **RESOLVED** — Now at plural paths: `.opencode/agents/`, `.opencode/commands/`, `.opencode/skills/<name>/SKILL.md`. Frontmatter changed: `maxSteps` → `steps`. Repo moved from `sst/opencode` to `anomalyco/opencode`. **No first-party marketplace**; plugin distribution via npm packages declared in `opencode.json` `"plugin"` array. Reads `.claude/*` as fallback. [Docs](https://opencode.ai/docs/)
+- ~~Kilo Code custom-mode model~~ **RESOLVED** — Custom modes now Markdown frontmatter (OpenCode-style), not YAML. Skills at `.kilo/skills/<name>/SKILL.md`. Reads `.claude/skills/`, `.agents/skills/` natively. Marketplace is index-style (`Kilo-Org/kilo-marketplace`); no first-class CLI install verb yet. CLI custom-mode support has known gaps ([#3304](https://github.com/Kilo-Org/kilocode/issues/3304)).
+
+### New open questions from research pass
+
+- **Cross-tool `.agents/` namespace.** Codex docs treat `.agents/` as a cross-vendor shared namespace; Kilo and OpenCode also read it. Should we *additionally* publish skills under `plugins/<name>/.agents/skills/` (mirroring `plugins/<name>/skills/`) so any tool that scans `.agents/` finds them with zero install? Phase 2 spike.
+- **Single marketplace.json for multiple ecosystems.** Several manifests overlap heavily in schema. Investigate whether one carefully-constructed `marketplace.json` (with both Claude flat fields *and* Copilot's `metadata` wrapper) could satisfy multiple readers. If yes, reduces 4 manifests → 1.
+- **Claude `<name>.agent.md` symlinks on Windows.** Translator decision: symlink (POSIX-clean but Windows-fragile) vs. duplicate copy (filesystem doubled but cross-platform). Decide in Phase 2.
+- **Codex agent TOML schema fidelity.** Some Claude agent frontmatter fields (e.g., `tools` arrays, custom permissions) don't have direct TOML equivalents. Translator behavior on unmapped fields: drop with warning, fail loudly, or emit a comment? Decide in Phase 2.
+- **Kilo CLI custom-mode gaps.** Open issues suggest Kilo's CLI custom-mode support trails the VS Code extension. Should agent-forge mark Kilo agents as "VS Code only" until those gaps close? Phase 2 evaluation.
+- **OpenCode opt-in npm distribution.** Should the OpenCode adapter additionally publish to npm so users can `opencode.json` `"plugin": ["agent-forge"]`? Or is the `.claude/*` fallback sufficient? Decide in Phase 2.
 - Whether `plugins/kpmg/test_harness.py` has reusable patterns worth porting before deletion (decided in Phase 0).
 - Whether to add `release-please` vs. `git-cliff` for changelog generation (decided in Phase 5).
-- Whether to submit `agent-forge` to `awesome-copilot` (the default Copilot CLI marketplace) for additional discoverability (decided post-1.0).
+- Whether to submit `agent-forge` to `awesome-copilot` (default Copilot CLI marketplace) and `Kilo-Org/kilo-marketplace` for additional discoverability (decided post-1.0).
 
 ## 10. Glossary
 

@@ -1,6 +1,6 @@
 # Phase 1 — Plugin Migration + Tier 1 Claude Code Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Migrate all 4 non-KPMG plugins from `rahulnakmol/agent-marketplace` into `agent-forge`, build the canonical `.claude-plugin/marketplace.json` (v1.0.0, KPMG-stripped), and prove the marketplace works end-to-end against a real Claude Code install.
 
@@ -30,7 +30,7 @@ Tasks in order: 1 → [Group A in parallel] → 6 → [Group B in parallel] → 
 **Files:**
 - Create: `/tmp/agent-marketplace/` (working copy, not committed)
 
-- [ ] **Step 1: Clone**
+- [x] **Step 1: Clone**
 
 ```bash
 cd /tmp
@@ -40,7 +40,7 @@ ls plugins/
 ```
 Expected: `kpmg/  msft-arch/  pm/  prompts/  writing/`
 
-- [ ] **Step 2: Verify ref-repo structure**
+- [x] **Step 2: Verify ref-repo structure**
 
 ```bash
 cat .claude-plugin/marketplace.json | python -m json.tool | head -30
@@ -54,7 +54,7 @@ Expected: see 5 plugins listed including `kpmg`. Note plugin versions for the mi
 **Files:**
 - Create: `plugins/writing/**` (entire tree from ref repo)
 
-- [ ] **Step 1: Copy the directory**
+- [x] **Step 1: Copy the directory**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -62,7 +62,7 @@ rm -rf plugins/writing
 cp -r /tmp/agent-marketplace/plugins/writing plugins/writing
 ```
 
-- [ ] **Step 2: Verify structure**
+- [x] **Step 2: Verify structure**
 
 ```bash
 find plugins/writing -type f | head -20
@@ -71,7 +71,7 @@ test -f plugins/writing/skills/humanize/SKILL.md && echo "skill OK"
 ```
 Expected: `manifest OK`, `skill OK`.
 
-- [ ] **Step 3: Quick KPMG residue check**
+- [x] **Step 3: Quick KPMG residue check**
 
 ```bash
 grep -ri "kpmg" plugins/writing/ || echo "clean"
@@ -85,7 +85,7 @@ Expected: `clean`.
 **Files:**
 - Create: `plugins/prompts/**`
 
-- [ ] **Step 1: Copy**
+- [x] **Step 1: Copy**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -93,7 +93,7 @@ rm -rf plugins/prompts
 cp -r /tmp/agent-marketplace/plugins/prompts plugins/prompts
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 ```bash
 test -f plugins/prompts/.claude-plugin/plugin.json && echo "manifest OK"
@@ -111,7 +111,7 @@ Expected: 5 lines of `OK` / `clean`.
 **Files:**
 - Create: `plugins/msft-arch/**` (~25 skills, the largest plugin)
 
-- [ ] **Step 1: Copy**
+- [x] **Step 1: Copy**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -119,7 +119,7 @@ rm -rf plugins/msft-arch
 cp -r /tmp/agent-marketplace/plugins/msft-arch plugins/msft-arch
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 ```bash
 test -f plugins/msft-arch/.claude-plugin/plugin.json && echo "manifest OK"
@@ -129,7 +129,7 @@ grep -ri "kpmg" plugins/msft-arch/ || echo "clean"
 ```
 Expected: `manifest OK`, ~25, `agent OK`, `clean`.
 
-- [ ] **Step 3: Spot-check one skill has references**
+- [x] **Step 3: Spot-check one skill has references**
 
 ```bash
 ls plugins/msft-arch/skills/azure-architect/references/
@@ -143,7 +143,7 @@ Expected: at least 3 reference files.
 **Files:**
 - Create: `plugins/pm/**` (massive TOM/PRD reference tree)
 
-- [ ] **Step 1: Copy**
+- [x] **Step 1: Copy**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -151,7 +151,7 @@ rm -rf plugins/pm
 cp -r /tmp/agent-marketplace/plugins/pm plugins/pm
 ```
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 ```bash
 test -f plugins/pm/.claude-plugin/plugin.json && echo "manifest OK"
@@ -169,7 +169,7 @@ Expected: `manifest OK`, several skills, several domains, `clean`.
 - Create: `tests/_legacy/kpmg_harness_reference.py`
 - Create: `tests/_legacy/README.md`
 
-- [ ] **Step 1: Copy with renamed filename**
+- [x] **Step 1: Copy with renamed filename**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -177,7 +177,7 @@ mkdir -p tests/_legacy
 cp /tmp/agent-marketplace/plugins/kpmg/test_harness.py tests/_legacy/kpmg_harness_reference.py
 ```
 
-- [ ] **Step 2: Write `tests/_legacy/README.md`**
+- [x] **Step 2: Write `tests/_legacy/README.md`**
 
 ```markdown
 # tests/_legacy
@@ -206,7 +206,7 @@ This directory MUST be empty before tagging v1.0.0. CI invariant in Phase 7
 adds a check.
 ```
 
-- [ ] **Step 3: Verify the legacy harness isn't picked up by pytest**
+- [x] **Step 3: Verify the legacy harness isn't picked up by pytest**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -221,14 +221,14 @@ Expected: zero tests collected (file doesn't match `test_*.py` pattern after ren
 **Files:**
 - Create: `.claude-plugin/marketplace.json`
 
-- [ ] **Step 1: Read the source marketplace.json plugin entries**
+- [x] **Step 1: Read the source marketplace.json plugin entries**
 
 ```bash
 cat /tmp/agent-marketplace/.claude-plugin/marketplace.json | python -m json.tool
 ```
 Note the description for each non-KPMG plugin.
 
-- [ ] **Step 2: Write the new manifest**
+- [x] **Step 2: Write the new manifest**
 
 ```json
 {
@@ -266,7 +266,7 @@ Note the description for each non-KPMG plugin.
 }
 ```
 
-- [ ] **Step 3: Validate JSON syntax**
+- [x] **Step 3: Validate JSON syntax**
 
 ```bash
 python -m json.tool .claude-plugin/marketplace.json > /dev/null && echo "valid JSON"
@@ -280,7 +280,7 @@ Expected: `valid JSON`.
 **Files:**
 - Create: `tests/unit/test_marketplace_schema.py`
 
-- [ ] **Step 1: Write the failing test (no schema fetcher yet)**
+- [x] **Step 1: Write the failing test (no schema fetcher yet)**
 
 ```python
 """Validate .claude-plugin/marketplace.json against schema + invariants."""
@@ -350,7 +350,7 @@ def test_no_kpmg_in_marketplace(manifest: dict) -> None:
         assert "kpmg" not in plugin["name"].lower()
 ```
 
-- [ ] **Step 2: Run + expect pass**
+- [x] **Step 2: Run + expect pass**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -365,7 +365,7 @@ Expected: 7 passing tests.
 **Files:**
 - Create: `tests/unit/test_plugin_json_schema.py`
 
-- [ ] **Step 1: Write the test**
+- [x] **Step 1: Write the test**
 
 ```python
 """Validate every plugins/<name>/.claude-plugin/plugin.json structure."""
@@ -423,7 +423,7 @@ def test_plugin_name_matches_directory(manifest_path: Path) -> None:
     )
 ```
 
-- [ ] **Step 2: Run + expect pass**
+- [x] **Step 2: Run + expect pass**
 
 ```bash
 pytest tests/unit/test_plugin_json_schema.py -v
@@ -437,7 +437,7 @@ Expected: 4 plugins × 3 parametrized tests + 1 = 13 passing.
 **Files:**
 - Create: `tests/unit/test_skill_md_frontmatter.py`
 
-- [ ] **Step 1: Write the test**
+- [x] **Step 1: Write the test**
 
 ```python
 """Every SKILL.md across every plugin must have valid agentskills.io frontmatter."""
@@ -501,7 +501,7 @@ def test_skill_name_matches_directory(skill_md: Path) -> None:
     )
 ```
 
-- [ ] **Step 2: Run + see what fails**
+- [x] **Step 2: Run + see what fails**
 
 ```bash
 pytest tests/unit/test_skill_md_frontmatter.py -v
@@ -516,7 +516,7 @@ Expected: most pass; if any fail (e.g., name/dir mismatch in a legacy skill), fi
 - Create: `tests/unit/test_no_kpmg_residue.py`
 - Create: `tests/unit/test_reference_links_resolve.py`
 
-- [ ] **Step 1: Write the KPMG residue test**
+- [x] **Step 1: Write the KPMG residue test**
 
 ```python
 """Guard: no KPMG strings should appear anywhere under plugins/."""
@@ -555,7 +555,7 @@ def test_no_kpmg_directory() -> None:
     assert not (PLUGINS / "kpmg").exists(), "plugins/kpmg/ must not exist in agent-forge"
 ```
 
-- [ ] **Step 2: Write the reference link resolution test**
+- [x] **Step 2: Write the reference link resolution test**
 
 ```python
 """Every reference linked in a SKILL.md body must exist on disk."""
@@ -585,7 +585,7 @@ def test_referenced_files_exist(skill_md: Path) -> None:
     assert not missing, f"{skill_md} references missing files: {missing}"
 ```
 
-- [ ] **Step 3: Run both**
+- [x] **Step 3: Run both**
 
 ```bash
 pytest tests/unit/test_no_kpmg_residue.py tests/unit/test_reference_links_resolve.py -v
@@ -602,7 +602,7 @@ Expected: all pass. Any failures point to a specific file to fix.
 - Create: `plugins/msft-arch/THIRD_PARTY_NOTICES.md`
 - Create: `plugins/pm/THIRD_PARTY_NOTICES.md`
 
-- [ ] **Step 1: Write the writing plugin notices**
+- [x] **Step 1: Write the writing plugin notices**
 
 ```markdown
 # Third-Party Notices — writing
@@ -620,7 +620,7 @@ state otherwise.
 None at this time.
 ```
 
-- [ ] **Step 2: Write the prompts plugin notices**
+- [x] **Step 2: Write the prompts plugin notices**
 
 ```markdown
 # Third-Party Notices — prompts
@@ -637,7 +637,7 @@ state otherwise.
 None at this time.
 ```
 
-- [ ] **Step 3: Write the msft-arch plugin notices**
+- [x] **Step 3: Write the msft-arch plugin notices**
 
 ```markdown
 # Third-Party Notices — msft-arch
@@ -658,7 +658,7 @@ Phase 5) walks these and produces the top-level `THIRD_PARTY_NOTICES.md`.
   affiliation with Microsoft Corporation is implied.
 ```
 
-- [ ] **Step 4: Write the pm plugin notices**
+- [x] **Step 4: Write the pm plugin notices**
 
 ```markdown
 # Third-Party Notices — pm
@@ -689,14 +689,14 @@ in Phase 5.
 **Files:**
 - (No file creation — this is a manual verification step the engineer runs)
 
-- [ ] **Step 1: Verify Claude Code is installed**
+- [x] **Step 1: Verify Claude Code is installed**
 
 ```bash
 claude --version
 ```
 Expected: version output. If missing, install per [docs](https://docs.claude.com/en/docs/claude-code/getting-started).
 
-- [ ] **Step 2: Add the local marketplace to Claude Code**
+- [x] **Step 2: Add the local marketplace to Claude Code**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -704,21 +704,21 @@ claude plugin marketplace add file://$(pwd)
 ```
 Expected: marketplace registered. If error, capture exact message in this task before proceeding.
 
-- [ ] **Step 3: List discoverable plugins**
+- [x] **Step 3: List discoverable plugins**
 
 ```bash
 claude plugin list --available
 ```
 Expected: 4 plugins listed: `writing`, `prompts`, `msft-arch`, `pm`. NO `kpmg`.
 
-- [ ] **Step 4: Install one plugin (the smallest — `writing`)**
+- [x] **Step 4: Install one plugin (the smallest — `writing`)**
 
 ```bash
 claude plugin install writing
 ```
 Expected: install completes; no errors.
 
-- [ ] **Step 5: Smoke-test the skill in a one-shot Claude session**
+- [x] **Step 5: Smoke-test the skill in a one-shot Claude session**
 
 ```bash
 claude -p "I'm thrilled to announce — and this is truly remarkable — that we are launching our amazing new product." --skill humanize
@@ -734,7 +734,7 @@ If any step fails, the failure mode should be captured in this task before conti
 **Files:**
 - (Stage everything from Tasks 2–12)
 
-- [ ] **Step 1: Stage**
+- [x] **Step 1: Stage**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -742,14 +742,14 @@ git add plugins/ .claude-plugin/marketplace.json tests/unit/test_marketplace_sch
 git status
 ```
 
-- [ ] **Step 2: Run all Layer A tests one more time**
+- [x] **Step 2: Run all Layer A tests one more time**
 
 ```bash
 pytest tests/unit -v
 ```
 Expected: 100% pass.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git commit -s -m "Phase 1: migrate 4 plugins + canonical marketplace.json + Layer A tests
@@ -785,9 +785,9 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
 
 ## Self-Review
 
-- [ ] Spec coverage: D9 (KPMG excluded, verified by test) ✓; D7 (test harness outside plugins) ✓; canonical authoring at `plugins/<name>/skills/` ✓
-- [ ] Placeholder scan: no TBD/TODO; all code is concrete; commands have expected output ✓
-- [ ] Type consistency: `manifest_path` as Path everywhere; `_id` helper consistent; `KPMG_RE` reused across two tests with same compiled pattern ✓
-- [ ] Boundary guard from Phase 0 still passes (no install scripts yet, still skipped) ✓
+- [x] Spec coverage: D9 (KPMG excluded, verified by test) ✓; D7 (test harness outside plugins) ✓; canonical authoring at `plugins/<name>/skills/` ✓
+- [x] Placeholder scan: no TBD/TODO; all code is concrete; commands have expected output ✓
+- [x] Type consistency: `manifest_path` as Path everywhere; `_id` helper consistent; `KPMG_RE` reused across two tests with same compiled pattern ✓
+- [x] Boundary guard from Phase 0 still passes (no install scripts yet, still skipped) ✓
 
 **Done criteria:** All 4 plugins present and KPMG-free; `pytest tests/unit` passes 100%; `claude plugin marketplace add file://./` succeeds and lists 4 plugins; humanize smoke-test produces clean output.

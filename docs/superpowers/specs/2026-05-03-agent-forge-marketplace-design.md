@@ -257,7 +257,7 @@ The `agent-forge install <plugin>` command dispatches to the right translator an
 | Codex (OpenAI) | 3a | `codex` binary or `AGENTS.md` in cwd | `AGENTS.md` (root) + sub-files referenced via include | Adapter + integration test |
 | Cursor | 3a | `cursor` binary or `.cursor/` directory | `.cursor/rules/<plugin>/*.md` | Adapter + integration test |
 | Aider | 3a | `aider` on `$PATH` or `.aider.conf.yml` | `~/.aider/conventions/<plugin>.md` | **Deferred to v1.1** — plugin model not stable enough |
-| Amp (Sourcegraph) | 3a | `amp` binary | TBD | **Deferred to v1.1** — needs format research |
+| Amp (Sourcegraph) | 3a | `amp` binary | N/A at v1.0 (translator stub returns "not yet supported") | **Deferred to v1.1** — needs format research |
 | Perplexity Spaces | 3b | User-asserted (no detection possible) | N/A — `agent-forge install <plugin> --target perplexity` prints loader to stdout | Loader generator + paste-ready guide |
 | ChatGPT custom GPTs | 3b | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
 | Claude.ai Projects | 3b | User-asserted | N/A — same UX | Loader generator + paste-ready guide |
@@ -397,15 +397,21 @@ Cheap, non-blocking, only on stderr so it does not break scripted usage.
 agent-forge list                                # what's installed locally + tier
 agent-forge available [--cli <tier>]            # what's in the marketplace I could install
 agent-forge detect                              # which CLI(s) are on this machine
-agent-forge install <plugin>[/<skill>] [--tier <cli>] [--tag v1.0.0]
-agent-forge update [<plugin>] [--check]
-agent-forge pin <plugin> <version>              # version = tag or sha
-agent-forge unpin <plugin>
+agent-forge install <id> [--tier <cli>] [--tag v1.0.0]
+agent-forge update [<id>] [--check]
+agent-forge pin <id> <version>                  # version = tag or sha
+agent-forge unpin <id>
 agent-forge sync                                # force-reinstall everything at HEAD
-agent-forge remove <plugin> [--tier <cli>]
-agent-forge history [<plugin>]                  # replay operation_log
+agent-forge remove <id> [--tier <cli>]
+agent-forge history [<id>]                      # replay operation_log
 agent-forge doctor                              # validate manifest, check file integrity
 ```
+
+**`<id>` syntax:** the CLI accepts either:
+- `<plugin>` — operate on the whole plugin (e.g., `writing`)
+- `<plugin>/<skill>` — operate on a single skill (e.g., `writing/humanize`); the CLI resolves the full path `plugins/writing/skills/humanize/` internally
+
+This short form is what users type; the full path (`<plugin>/skills/<skill>`) is what gets stored in the manifest's `scope_path` field.
 
 ## 6. Test Harness Architecture
 

@@ -1,5 +1,10 @@
 # agent-forge
 
+[![GitHub Release](https://img.shields.io/github/v/release/rahulnakmol/agent-forge?style=flat-square)](https://github.com/rahulnakmol/agent-forge/releases/latest)
+[![PyPI](https://img.shields.io/pypi/v/agent-forge?style=flat-square)](https://pypi.org/project/agent-forge/)
+[![License](https://img.shields.io/github/license/rahulnakmol/agent-forge?style=flat-square)](LICENSE)
+[![Tests](https://img.shields.io/github/actions/workflow/status/rahulnakmol/agent-forge/ci-structural.yml?label=tests&style=flat-square)](https://github.com/rahulnakmol/agent-forge/actions/workflows/ci-structural.yml)
+
 A curated, BSD-3-Clause marketplace of agent skills, plugins, and slash commands.
 Works natively with Claude Code, GitHub Copilot CLI, OpenAI Codex CLI, and Cursor.
 Git-URL install for Amp and Gemini CLI. Copy-to-home adapters for Kilo Code,

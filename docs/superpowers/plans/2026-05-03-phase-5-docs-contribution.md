@@ -1,6 +1,6 @@
 # Phase 5 — Documentation + Contribution Infrastructure Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Ship complete user-facing documentation, contributor guides, decision records, and the auto-generation tooling (third-party notices aggregator + install index) so the v1.0.0 release is publishable and contributable from day one.
 
@@ -33,7 +33,7 @@ Recommended: 12 parallel subagents for Group A, 3 for B, 8 for C, 2 for D, 2 for
 **Files:**
 - Create: `docs/install/_template.md`
 
-- [ ] **Step 1: Write the canonical template that every per-tool guide follows**
+- [x] **Step 1: Write the canonical template that every per-tool guide follows**
 
 ```markdown
 # Installing agent-forge plugins for <TOOL NAME>
@@ -127,12 +127,12 @@ For each of the 12 install targets, fill in the template:
 
 ### Per-task template (each subagent runs this for its tool)
 
-- [ ] **Step 1: Copy the template** (`cp docs/install/_template.md docs/install/<tool>.md`)
-- [ ] **Step 2: Fill in tool-specific install command** (use the verified commands from spec Section 4)
-- [ ] **Step 3: Fill in target paths from `target_paths()` in the tool's translator** (Phase 2 implementations are the source of truth)
-- [ ] **Step 4: Fill in troubleshooting** based on Phase 4 integration test failures (most common issues)
-- [ ] **Step 5: Verify the doc is agent-readable** — paste into a Claude or Copilot session, ask it to "follow this guide and install agent-forge for <tool>"
-- [ ] **Step 6: Commit**
+- [x] **Step 1: Copy the template** (`cp docs/install/_template.md docs/install/<tool>.md`)
+- [x] **Step 2: Fill in tool-specific install command** (use the verified commands from spec Section 4)
+- [x] **Step 3: Fill in target paths from `target_paths()` in the tool's translator** (Phase 2 implementations are the source of truth)
+- [x] **Step 4: Fill in troubleshooting** based on Phase 4 integration test failures (most common issues)
+- [x] **Step 5: Verify the doc is agent-readable** — paste into a Claude or Copilot session, ask it to "follow this guide and install agent-forge for <tool>"
+- [x] **Step 6: Commit**
 
 **Specific tool examples:**
 
@@ -237,7 +237,7 @@ Each follows this skeleton:
 - Create: `THIRD_PARTY_NOTICES.md` (generated)
 - Create: `tests/unit/test_aggregate_notices.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/test_aggregate_notices.py"""
@@ -256,7 +256,7 @@ def test_third_party_notices_in_sync() -> None:
     assert result.returncode == 0, f"THIRD_PARTY_NOTICES.md drifted:\n{result.stdout}"
 ```
 
-- [ ] **Step 2: Implement `scripts/aggregate-notices.py`**
+- [x] **Step 2: Implement `scripts/aggregate-notices.py`**
 
 ```python
 """Aggregate per-plugin THIRD_PARTY_NOTICES.md files into the top-level one.
@@ -313,14 +313,14 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: Run + commit generated file**
+- [x] **Step 3: Run + commit generated file**
 
 ```bash
 python scripts/aggregate-notices.py
 pytest tests/unit/test_aggregate_notices.py -v
 ```
 
-- [ ] **Step 4: Wire into `.github/workflows/ci-structural.yml`**
+- [x] **Step 4: Wire into `.github/workflows/ci-structural.yml`**
 
 Add a step:
 
@@ -338,7 +338,7 @@ Add a step:
 - Create: `docs/install/_index.md` (generated)
 - Create: `tests/unit/test_install_index.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/test_install_index.py"""
@@ -357,7 +357,7 @@ def test_install_index_in_sync() -> None:
     assert result.returncode == 0, result.stdout
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```python
 """Generate docs/install/_index.md — catalog of all plugins × all install targets.
@@ -426,7 +426,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: Run + commit**
+- [x] **Step 3: Run + commit**
 
 ```bash
 python scripts/build-install-index.py
@@ -440,7 +440,7 @@ pytest tests/unit/test_install_index.py -v
 **Files:**
 - Modify: `README.md`
 
-- [ ] **Step 1: Write the README** (under 200 lines; concrete examples; multi-CLI pitch)
+- [x] **Step 1: Write the README** (under 200 lines; concrete examples; multi-CLI pitch)
 
 ```markdown
 # agent-forge
@@ -534,25 +534,25 @@ Replace the Phase 0 stub with the full contributor overview that funnels to `doc
 
 ## Final task: Smoke + commit Phase 5
 
-- [ ] **Step 1: Verify all 12 install guides exist + render**
+- [x] **Step 1: Verify all 12 install guides exist + render**
 
 ```bash
 for f in docs/install/*.md; do echo "$f:"; head -5 "$f"; done
 ```
 
-- [ ] **Step 2: Verify all 8 ADRs exist**
+- [x] **Step 2: Verify all 8 ADRs exist**
 
 ```bash
 ls docs/decisions/*.md | wc -l    # should be 8+
 ```
 
-- [ ] **Step 3: Run all sync invariant tests**
+- [x] **Step 3: Run all sync invariant tests**
 
 ```bash
 pytest tests/unit/test_aggregate_notices.py tests/unit/test_install_index.py tests/unit/test_tier1_artifacts_sync.py -v
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add docs/install/ docs/contributing/ docs/decisions/ scripts/aggregate-notices.py scripts/build-install-index.py THIRD_PARTY_NOTICES.md README.md CONTRIBUTING.md tests/unit/test_aggregate_notices.py tests/unit/test_install_index.py .github/workflows/ci-structural.yml
@@ -597,9 +597,9 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
 
 ## Self-Review
 
-- [ ] All 12 install guides present ✓
-- [ ] All 3 contributor docs present ✓
-- [ ] Per spec Section 7, ADR for every D-numbered decision ✓
-- [ ] Aggregator + index generator both have CI sync invariants ✓
+- [x] All 12 install guides present ✓
+- [x] All 3 contributor docs present ✓
+- [x] Per spec Section 7, ADR for every D-numbered decision ✓
+- [x] Aggregator + index generator both have CI sync invariants ✓
 
 **Done criteria:** every `docs/install/*.md` and `docs/contributing/*.md` exists and is ≥30 lines; all sync invariants pass; README + CONTRIBUTING reflect the v1.0 12-target story.

@@ -8,6 +8,7 @@ pytestmark = pytest.mark.requires_docker
 CLI = "codex-cli"
 IMAGE = f"agent-forge-test:{CLI}"
 DOCKERFILE = f"tests/integration/dockerfiles/{CLI}.Dockerfile"
+CONTAINER = f"agent-forge-test-{CLI}"
 
 
 def _build_image() -> None:
@@ -18,9 +19,9 @@ def _build_image() -> None:
     )
 
 
-def _docker_run(*cmd: str) -> subprocess.CompletedProcess:
+def _exec(*cmd: str) -> subprocess.CompletedProcess:
     return subprocess.run(
-        ["docker", "run", "--rm", IMAGE, *cmd],
+        ["docker", "exec", CONTAINER, *cmd],
         capture_output=True, text=True, timeout=120,
     )
 
@@ -28,19 +29,25 @@ def _docker_run(*cmd: str) -> subprocess.CompletedProcess:
 @pytest.mark.slow
 def test_codex_cli_install_lifecycle() -> None:
     _build_image()
-    # Install writing plugin
-    r = _docker_run("agent-forge", "install", "writing", "--tier", CLI)
-    assert r.returncode == 0, f"install failed: {r.stderr}"
-    # Check list shows the install
-    r = _docker_run("agent-forge", "list")
-    assert r.returncode == 0
-    assert "writing" in r.stdout
-    # Update check
-    r = _docker_run("agent-forge", "update", "--check")
-    assert r.returncode == 0
-    # Remove
-    r = _docker_run("agent-forge", "remove", f"writing@{CLI}")
-    assert r.returncode == 0
-    # Verify removed
-    r = _docker_run("agent-forge", "list")
-    assert "writing" not in r.stdout or "No installs" in r.stdout
+    subprocess.run(
+        ["docker", "run", "-d", "--name", CONTAINER, "--rm", IMAGE, "sleep", "300"],
+        check=True, timeout=30,
+    )
+    try:
+        r = _exec("agent-forge", "install", "writing", "--tier", CLI)
+        assert r.returncode == 0, f"install failed: {r.stderr}"
+
+        r = _exec("agent-forge", "list")
+        assert r.returncode == 0
+        assert "writing" in r.stdout, f"expected 'writing' in list output: {r.stdout}"
+
+        r = _exec("agent-forge", "update", "--check")
+        assert r.returncode == 0
+
+        r = _exec("agent-forge", "remove", f"writing@{CLI}")
+        assert r.returncode == 0
+
+        r = _exec("agent-forge", "list")
+        assert "writing" not in r.stdout or "No installs" in r.stdout
+    finally:
+        subprocess.run(["docker", "rm", "-f", CONTAINER], capture_output=True)

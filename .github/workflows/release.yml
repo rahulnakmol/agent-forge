@@ -18,6 +18,8 @@ jobs:
           python-version: "3.12"
       - name: Install build tools
         run: pip install build twine
+      - name: Copy README into package dir for sdist
+        run: cp README.md scripts/agent_forge/README.md
       - name: Build distribution
         run: python -m build scripts/agent_forge
       - name: Publish to PyPI (trusted publisher)

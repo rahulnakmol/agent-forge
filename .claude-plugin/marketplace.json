@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/marketplace.json",
+  "name": "agent-forge",
+  "description": "A curated cross-CLI marketplace of agent skills, plugins, agents, and slash commands — works natively with Claude Code, GitHub Copilot CLI, OpenAI Codex CLI, Cursor, Sourcegraph Amp, Gemini CLI; with adapters for Kilo Code, OpenCode, Crush; and a portable loader for Perplexity, ChatGPT, Claude.ai Projects.",
+  "version": "1.0.0",
+  "owner": {
+    "name": "Rahul N Akmol",
+    "email": "rahulnakmol@gmail.com",
+    "url": "https://github.com/rahulnakmol"
+  },
+  "plugins": [
+    {
+      "name": "writing",
+      "description": "Writing transformation and text processing skills including humanization, voice calibration, and AI pattern detection",
+      "source": "./plugins/writing"
+    },
+    {
+      "name": "prompts",
+      "description": "Interactive prompt engineering — guides users through structured dialogue to build comprehensive, optimized prompts with technique selection and voice calibration",
+      "source": "./plugins/prompts"
+    },
+    {
+      "name": "msft-arch",
+      "description": "Microsoft enterprise architecture suite: full engagement workflow, coding oracle, tech spec generator, Target Operating Model architect, and a unified orchestrator agent",
+      "source": "./plugins/msft-arch"
+    },
+    {
+      "name": "pm",
+      "description": "Product/Program Management suite — 12 composable skills following UNIX philosophy: Product Constitution, business discovery, multi-platform TOM design, PRD generation with 11-Star quality review, backlog export to ADO/Linear/GitHub",
+      "source": "./plugins/pm"
+    }
+  ]
+}

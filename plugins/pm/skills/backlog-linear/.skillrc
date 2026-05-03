@@ -1,0 +1,44 @@
+skill:
+  name: pm-backlog-linear
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: platform-export
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - Linear issue creation
+    - Label management
+    - Parent-child hierarchy
+
+workflow:
+  phases:
+    - Configure
+    - Cross-Reference
+    - Create
+
+deliverables:
+  documents:
+    - Linear Backlog Export
+
+mcp_dependencies:
+  linear:
+    - save_issue
+    - list_issues
+    - list_projects
+    - list_teams
+    - create_issue_label
+    - list_issue_labels
+    - list_issue_statuses
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-backlog-generator (Mode B)
+      - UNIX refactor

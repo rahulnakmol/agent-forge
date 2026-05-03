@@ -1,0 +1,97 @@
+skill:
+  name: pm-tom-architect
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: operating-model-design
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior TOM Architect
+  specializations:
+    - L1-L4 process decomposition and taxonomy design
+    - Maturity assessment (5-level CMM-based)
+    - Organizational design (GPO overlay, RACI, spans of control)
+    - Service delivery model design (insource/outsource/hybrid/GBS)
+    - KPI framework design (strategic/operational/process)
+    - AI augmentation classification (Autonomous/HITL/Copilot/RPA/Human)
+    - Multi-platform technology mapping (Microsoft, SAP, Oracle, Salesforce, Workday, ServiceNow)
+    - Capability-to-module mapping
+    - Mermaid diagram generation (capability maps, maturity heatmaps, RACI, tech overlays)
+    - Executive deliverables (PPTX deck, XLSX workbook, PDF package)
+
+workflow:
+  phases:
+    - Discover
+    - Scope
+    - Analyze
+    - Design
+    - Map
+    - Visualize
+    - Deliver
+
+platforms:
+  microsoft:
+    modules: D365 F&O, D365 CE, Power Platform, Azure, Fabric
+    ai: Copilot, Azure AI
+  sap:
+    modules: S/4HANA, SuccessFactors, Ariba, BTP, Analytics Cloud
+    ai: Joule AI, Business AI
+  oracle:
+    modules: Fusion ERP, HCM Cloud, SCM Cloud, CX Cloud, OCI
+    ai: Fusion AI, Agent Studio
+  salesforce:
+    modules: Sales Cloud, Service Cloud, Marketing Cloud, Platform, MuleSoft
+    ai: Agentforce, Einstein AI
+  workday:
+    modules: HCM, Financial Management, Adaptive Planning, Extend
+    ai: Illuminate, Ask Workday
+  servicenow:
+    modules: ITSM, ITOM, CSM, HR Service Delivery, App Engine
+    ai: Now Assist, Now Intelligence
+
+domains:
+  - Finance
+  - HR
+  - Procurement
+  - Supply Chain Management
+  - Cyber Security
+  - Sustainability
+
+deliverables:
+  documents:
+    - TOM Design Document
+  diagrams:
+    - Capability Map (mindmap)
+    - Process Taxonomy (flowchart L1-L4)
+    - Maturity Assessment (quadrant chart)
+    - Role-Process Matrix (RACI)
+    - Technology Overlay (C4 container)
+    - KPI Structure (mindmap)
+  workbooks:
+    - Capability Register
+    - Maturity Assessment
+    - KPI Framework
+    - Technology Mapping
+    - RACI Matrix
+    - AI Augmentation Register
+  presentations:
+    - TOM Executive Deck (15 slides)
+
+integrations:
+  pm-discover: true
+  pm-map: true
+  pm-epic-decompose: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Platform-agnostic TOM architect extracted from ms-tom-architect
+      - Multi-platform support added (Microsoft, SAP, Oracle, Salesforce, Workday, ServiceNow)
+      - 6-domain coverage (Finance, HR, Procurement, SCM, Cyber, Sustainability)
+      - AI augmentation framework generalized across all platforms
+      - Integrated into tech-pm-skills consulting pipeline

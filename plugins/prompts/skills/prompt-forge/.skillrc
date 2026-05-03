@@ -1,0 +1,173 @@
+skill:
+  name: prompt-forge
+  version: 2.0.0
+  last_updated: 2026-03-28
+  next_review: 2026-06-28
+
+classification:
+  type: prompt-engineering
+  domain: meta-ai-interaction
+  methodology: signal-driven-prompt-composition
+  target_audience: all-users
+  design_philosophy: unix-pipeline
+
+expertise:
+  role: expert-prompt-engineer
+  specializations:
+    - prompt-technique-selection
+    - signal-based-routing
+    - hardening-pattern-composition
+    - requirements-elicitation
+    - voice-profile-calibration
+    - artifact-aware-generation
+    - interactive-dialogue-design
+
+workflow:
+  phases:
+    - intent-discovery
+    - context-and-constraints-gathering
+    - signal-detection-and-technique-selection
+    - hardening-pattern-auto-application
+    - voice-and-artifact-configuration
+    - prompt-assembly-and-delivery
+
+  prompt_techniques:
+    tier_1_direct:
+      - zero-shot
+      - few-shot
+      - directional-stimulus
+    tier_2_reasoning:
+      - meta-prompting
+      - knowledge-generation
+      - chain-of-thought
+      - self-consistency
+      - tree-of-thought
+    tier_3_agentic:
+      - react
+      - prompt-chaining
+
+  hardening_patterns:
+    - anchor
+    - constraint-stack
+    - persona-boundary
+    - failure-injection
+    - confidence-gate
+    - step-separator
+    - compression-command
+    - assumption-audit
+    - reframe-test
+    - specificity-ladder
+
+  supported_task_categories:
+    - query-answer
+    - research
+    - artifact-document (docx)
+    - artifact-spreadsheet (xlsx)
+    - artifact-presentation (pptx)
+    - artifact-markdown (md)
+    - code
+    - workflow-automation
+
+voice_profiles:
+  supported:
+    - OX (Oxford academic)
+    - SF (San Francisco tech)
+    - AB (Australian business)
+    - ST (Southern storyteller)
+  custom: true
+
+integrations:
+  humanize_skill: true
+  docx_skill: true
+  xlsx_skill: true
+  pptx_skill: true
+  ask_user_question_tool: true
+
+agent:
+  name: prompt-forge-agent
+  type: orchestrator
+  philosophy: unix-pipeline
+  capabilities:
+    - autonomous-context-comprehension
+    - signal-based-technique-routing
+    - automatic-hardening-pattern-application
+    - minimal-question-dialogue
+    - codebase-aware-context-extraction
+
+deliverables:
+  primary: comprehensive-ready-to-use-prompt
+  format: markdown-code-block
+  includes:
+    - technique-label
+    - hardening-patterns-applied
+    - task-category
+    - complexity-level
+    - voice-profile (when applicable)
+    - self-contained-prompt-text
+    - usage-notes
+
+platforms:
+  compatible:
+    - Claude Chat (web)
+    - Claude Code
+
+references:
+  techniques: references/TECHNIQUES.md
+  hardening_patterns: references/HARDENING-PATTERNS.md
+  signal_router: references/SIGNAL-ROUTER.md
+  assembly_rules: references/ASSEMBLY-RULES.md
+  category_questions: references/CATEGORY-QUESTIONS.md
+  voice_profiles: references/VOICE-PROFILES.md
+
+sources:
+  - name: dair-ai/Prompt-Engineering-Guide
+    contribution: Chain-of-Thought, Self-Consistency, Tree of Thought, ReAct, Directional Stimulus techniques
+  - name: phodal/prompt-patterns
+    contribution: Design-patterns approach to prompt composition, composability principles
+  - name: Brady Long (@thisguyknowsai)
+    contribution: 10 hardening patterns (Anchor, Constraint Stack, Persona Boundary, Failure Injection, Confidence Gate, Step Separator, Compression Command, Assumption Audit, Reframe Test, Specificity Ladder)
+
+changelog:
+  - version: 2.0.0
+    date: 2026-03-28
+    changes:
+      - Expanded from 5 to 10 prompt techniques across 3 tiers (Direct, Reasoning, Agentic)
+      - Added Chain-of-Thought, Self-Consistency, Tree of Thought, ReAct, Directional Stimulus
+      - Added 10 composable hardening patterns from Brady Long
+      - Created signal-based auto-routing (replaces manual technique selection matrix)
+      - Created prompt-forge-agent orchestrator following UNIX philosophy
+      - Agent comprehends context autonomously before asking questions
+      - Automatic hardening pattern application based on detected signals
+      - Prompt assembly follows composable layer architecture
+      - Added SIGNAL-ROUTER.md and HARDENING-PATTERNS.md references
+      - Sources from dair-ai/Prompt-Engineering-Guide and phodal/prompt-patterns
+  - version: 1.0.0
+    date: 2026-03-19
+    changes:
+      - Initial release
+      - 5-phase interactive workflow
+      - 5 prompt techniques (zero-shot, few-shot, meta, knowledge-generation, prompt-chaining)
+      - Voice profile integration (OX, SF, AB, ST)
+      - Humanize skill auto-integration for artifacts
+      - AskUserQuestion-driven dialogue
+      - Technique selection matrix and decision heuristics
+      - Artifact-aware prompt assembly with skill references
+
+maintenance:
+  review_cycle: quarterly
+  update_triggers:
+    - New prompt engineering techniques
+    - New hardening patterns identified
+    - New voice profiles added to humanize skill
+    - New artifact types supported
+    - User feedback patterns
+    - Signal router accuracy improvements
+
+metrics:
+  quality_targets:
+    prompt_completeness: 100%
+    technique_accuracy: 95%
+    hardening_coverage: 90%
+    signal_detection_accuracy: 90%
+    voice_integration: 100%
+    user_satisfaction: 90%

@@ -1,0 +1,39 @@
+skill:
+  name: pm-prd-draft
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: requirements-generation
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - PRD generation
+    - User story writing (INVEST)
+    - Acceptance criteria (Given-When-Then)
+    - MoSCoW prioritization
+
+workflow:
+  phases:
+    - Receive
+    - Draft
+    - Deliver
+
+deliverables:
+  documents:
+    - Product Requirements Document
+
+integrations:
+  pm-prd-validate: true
+  pm-prd-review: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-prd-generator (phases 1,3,5)
+      - UNIX refactor

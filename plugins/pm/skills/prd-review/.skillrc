@@ -1,0 +1,40 @@
+skill:
+  name: pm-prd-review
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: quality-review
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - 11-Star Experience Framework
+    - Quantitative scoring
+    - Chesky principles
+    - Improvement categorization
+
+workflow:
+  phases:
+    - Receive
+    - Assess
+    - Score
+    - Recommend
+    - Report
+
+deliverables:
+  documents:
+    - Quality Review Report
+
+integrations:
+  pm-prd-draft: true  # rewrite partner via orchestrator
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Streamlined from pm-prd-reviewer
+      - Removed rewrite loop orchestration

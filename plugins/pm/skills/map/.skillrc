@@ -1,0 +1,38 @@
+skill:
+  name: pm-map
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: process-mapping
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - Persona mapping
+    - Process flow design (BPMN/swimlane/state machine)
+    - Document assembly
+
+workflow:
+  phases:
+    - Map
+    - Document
+    - Handoff
+
+deliverables:
+  documents:
+    - Process Flow Document
+
+integrations:
+  pm-epic-decompose: true
+  ms-tom-architect: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-discovery (phases 5-7)
+      - UNIX refactor

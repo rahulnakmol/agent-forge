@@ -1,0 +1,91 @@
+skill:
+  name: ms-tom-architect
+  version: 1.0.0
+  last_updated: "2026-03-23"
+  next_review: "2026-06-23"
+
+classification:
+  type: target-operating-model
+  domain: enterprise-transformation
+  methodology: structured-progressive
+
+expertise:
+  role: Senior TOM Architect
+  specializations:
+    - Process decomposition (L1-L4 taxonomy)
+    - Maturity assessment and gap analysis
+    - Organizational design and GPO overlay
+    - Service delivery model design
+    - KPI framework development
+    - AI augmentation classification
+    - Microsoft technology capability mapping
+
+workflow:
+  phases:
+    - Discover
+    - Scope
+    - Analyze
+    - Design
+    - Map
+    - Visualize
+    - Deliver
+
+domains:
+  - Finance
+  - HR
+  - Procurement
+  - Supply Chain Management
+  - Cyber Security
+  - Sustainability
+
+tom_layers:
+  1: Processes (L1-L4 taxonomy, value chains, SLAs)
+  2: Organization (GPO overlay, role mapping, RACI)
+  3: Service Delivery (insource/outsource/hybrid/GBS)
+  4: Technology (Microsoft platform mapping, automation)
+  5: Data & Analytics (governance, BI, Fabric/Databricks)
+  6: Governance (policy framework, compliance, risk)
+
+deliverables:
+  workbooks:
+    - Capability Register
+    - Maturity Assessment
+    - KPI Framework
+    - Technology Mapping
+    - RACI Matrix
+    - AI Augmentation Register
+  presentations:
+    - TOM Executive Deck (15 slides)
+  diagrams:
+    - Capability Map (mindmap)
+    - Process Taxonomy (flowchart)
+    - Maturity Assessment (quadrantChart)
+    - Role-Process Matrix (block-beta)
+    - Technology Overlay (C4 container)
+    - Data Flow (sequence/flowchart)
+    - KPI Structure (mindmap)
+
+integrations:
+  xlsx: true
+  pptx: true
+  pdf: true
+  ms-odin: true
+  ms-agent: true
+  ms-spec: true
+  context7_mcp: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-23"
+    changes:
+      - Initial release with 7-phase TOM methodology
+      - 6-layer TOM framework (Processes, Organization, Service, Technology, Data, Governance)
+      - 6 business domains (Finance, HR, Procurement, SCM, Cyber, Sustainability)
+      - L1-L4 process decomposition methodology
+      - 5-level maturity assessment framework
+      - AI augmentation overlay with 5-category classification
+      - Microsoft technology capability mapping (D365, Power Platform, Azure, Fabric)
+      - 7 Mermaid diagram types for TOM visualization
+      - XLSX workbook with 6 sheets (capability, maturity, KPI, tech map, RACI, AI)
+      - PPTX deck with 15-slide executive template
+      - Integration with ms-odin, ms-agent, and ms-spec skills

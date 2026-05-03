@@ -1,0 +1,38 @@
+skill:
+  name: pm-discover
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: business-discovery
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - Business problem framing and root cause analysis
+    - Stakeholder mapping
+    - Initiative classification
+
+workflow:
+  phases:
+    - Intake
+    - Clarify
+    - Analyze
+    - Classify
+
+deliverables:
+  documents:
+    - Business Understanding Document
+
+integrations:
+  pm-map: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-discovery (phases 1-4)
+      - UNIX refactor

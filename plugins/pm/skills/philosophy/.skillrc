@@ -1,0 +1,66 @@
+skill:
+  name: pm-philosophy
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: product-strategy
+  domain: product-management
+  methodology: living-document
+
+expertise:
+  role: Senior Product Strategist & Constitution Author
+  specializations:
+    - Product principles authoring (opinionated, conflict-resolving)
+    - Value proposition mapping (JTBD, Outcome-Driven Innovation)
+    - Product positioning (April Dunford, category design)
+    - Customer experience philosophy (11-star alignment, Kano model)
+    - Product building approach (methodology, craft, release philosophy)
+    - Prioritization framework design (RICE, ICE, WSJF, Kano, custom)
+    - Research bets management (DIBB, OST, thesis-driven development)
+    - Living document management (quarterly review cadence)
+
+modes:
+  create:
+    trigger: No constitution files exist
+    phases: 9 (Context through Assemble)
+  co_author:
+    trigger: Constitution exists, user wants to evolve sections
+    workflow: Read → Select → Refine → Update
+  review:
+    trigger: Quarterly review or user-initiated assessment
+    workflow: Read → Assess → Update → Record
+
+output:
+  compact_summary:
+    path: "{project}/specs/product-constitution.md"
+    tokens: "~800"
+    purpose: "Quick-read alignment doc for all downstream skills"
+  section_files:
+    path: "{project}/specs/constitution/{section}.md"
+    sections:
+      - principles
+      - value-propositions
+      - positioning
+      - cx-philosophy
+      - building-approach
+      - prioritization-framework
+      - research-bets
+
+integrations:
+  pm-discover: reads principles for problem investigation
+  pm-prd-draft: reads positioning and cx-philosophy for PRD context
+  pm-prd-review: reads cx-philosophy for 11-star calibration
+  pm-epic-decompose: reads prioritization-framework for epic ordering
+  pm-tom-architect: reads value-propositions for TOM alignment
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Initial release with 7-section Product Constitution framework
+      - Three modes (Create, Co-author, Review)
+      - Two-tier output architecture (compact summary + section files)
+      - Context-aware downstream skill integration
+      - Quarterly review cadence support

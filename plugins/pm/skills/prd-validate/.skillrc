@@ -1,0 +1,35 @@
+skill:
+  name: pm-prd-validate
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: validation-filter
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - PRD structural validation
+    - Checklist enforcement
+
+workflow:
+  phases:
+    - Receive
+    - Check
+    - Report
+
+deliverables:
+  documents:
+    - Validation Report
+
+integrations: {}
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-prd-generator (phase 4)
+      - UNIX refactor

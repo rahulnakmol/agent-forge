@@ -1,0 +1,38 @@
+{
+  "name": "pm",
+  "description": "Product and Program Management skill suite for technology industries. 12 composable skills following UNIX philosophy: philosophy, discover, map, tom-architect, epic-decompose, prd-draft, prd-validate, prd-review, backlog-decompose, backlog-ado, backlog-linear, backlog-github. Includes Product Constitution (living strategy doc), multi-platform TOM design, and 11-Star PRD quality framework. Works for SaaS product companies and consulting delivery firms.",
+  "version": "2.2.0",
+  "author": {
+    "name": "Rahul Narasimha Akmol",
+    "email": "rahulnakmol@gmail.com"
+  },
+  "mcp_dependencies": {
+    "linear": {
+      "description": "Linear MCP server for direct issue creation, listing, and project/team management",
+      "required_tools": [
+        "save_issue",
+        "list_issues",
+        "list_projects",
+        "list_teams",
+        "get_issue",
+        "create_issue_label",
+        "list_issue_labels",
+        "list_issue_statuses"
+      ],
+      "usage": "backlog-linear"
+    },
+    "github": {
+      "description": "GitHub MCP server for issue creation, sub-issue hierarchy, and search",
+      "required_tools": [
+        "issue_write",
+        "issue_read",
+        "list_issues",
+        "search_issues",
+        "sub_issue_write",
+        "list_issue_types",
+        "add_issue_comment"
+      ],
+      "usage": "backlog-github"
+    }
+  }
+}

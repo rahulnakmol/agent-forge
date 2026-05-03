@@ -1,0 +1,39 @@
+skill:
+  name: pm-backlog-decompose
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: backlog-decomposition
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - PRD-to-backlog hierarchy
+    - 7 work item types
+    - Platform-neutral structure
+
+workflow:
+  phases:
+    - Receive
+    - Decompose
+    - Present
+
+deliverables:
+  documents:
+    - Backlog Decomposition Document
+
+integrations:
+  pm-backlog-ado: true
+  pm-backlog-linear: true
+  pm-backlog-github: true
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-backlog-generator (phases 1-2)
+      - UNIX refactor

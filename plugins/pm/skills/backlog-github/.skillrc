@@ -1,0 +1,44 @@
+skill:
+  name: pm-backlog-github
+  version: 1.0.0
+  last_updated: "2026-03-28"
+  next_review: "2026-06-28"
+
+classification:
+  type: platform-export
+  domain: product-management
+  methodology: structured-progressive
+
+expertise:
+  role: Senior Product/Program Manager
+  specializations:
+    - GitHub issue creation
+    - Sub-issue hierarchy
+    - Label management
+
+workflow:
+  phases:
+    - Configure
+    - Cross-Reference
+    - Create
+
+deliverables:
+  documents:
+    - GitHub Backlog Export
+
+mcp_dependencies:
+  github:
+    - issue_write
+    - issue_read
+    - list_issues
+    - search_issues
+    - sub_issue_write
+    - list_issue_types
+    - add_issue_comment
+
+version_history:
+  - version: 1.0.0
+    date: "2026-03-28"
+    changes:
+      - Extracted from pm-backlog-generator (Mode C)
+      - UNIX refactor

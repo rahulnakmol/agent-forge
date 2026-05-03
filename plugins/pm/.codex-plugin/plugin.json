@@ -1,0 +1,7 @@
+{
+  "name": "pm",
+  "version": "2.2.0",
+  "description": "Product and Program Management skill suite for technology industries. 12 composable skills following UNIX philosophy: philosophy, discover, map, tom-architect, epic-decompose, prd-draft, prd-validate, prd-review, backlog-decompose, backlog-ado, backlog-linear, backlog-github. Includes Product Constitution (living strategy doc), multi-platform TOM design, and 11-Star PRD quality framework. Works for SaaS product companies and consulting delivery firms.",
+  "skills": "skills/",
+  "agents": "agents/"
+}

@@ -1,0 +1,49 @@
+{
+  "name": "agent-forge",
+  "plugins": [
+    {
+      "name": "msft-arch",
+      "source": {
+        "path": "./plugins/msft-arch"
+      },
+      "policy": {
+        "installation": "interactive",
+        "authentication": "none"
+      },
+      "category": "productivity"
+    },
+    {
+      "name": "pm",
+      "source": {
+        "path": "./plugins/pm"
+      },
+      "policy": {
+        "installation": "interactive",
+        "authentication": "none"
+      },
+      "category": "productivity"
+    },
+    {
+      "name": "prompts",
+      "source": {
+        "path": "./plugins/prompts"
+      },
+      "policy": {
+        "installation": "interactive",
+        "authentication": "none"
+      },
+      "category": "productivity"
+    },
+    {
+      "name": "writing",
+      "source": {
+        "path": "./plugins/writing"
+      },
+      "policy": {
+        "installation": "interactive",
+        "authentication": "none"
+      },
+      "category": "productivity"
+    }
+  ]
+}

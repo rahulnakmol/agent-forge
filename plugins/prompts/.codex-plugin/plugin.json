@@ -1,0 +1,7 @@
+{
+  "name": "prompts",
+  "version": "2.0.0",
+  "description": "Intelligent prompt engineering suite with signal-based technique selection (10 techniques across 3 tiers), automatic hardening patterns (10 composable patterns), UNIX-philosophy orchestrator agent, and voice calibration. Transforms raw intent into production-grade AI prompts.",
+  "skills": "skills/",
+  "agents": "agents/"
+}

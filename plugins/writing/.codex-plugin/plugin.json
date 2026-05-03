@@ -1,0 +1,6 @@
+{
+  "name": "writing",
+  "version": "1.0.0",
+  "description": "Collection of writing transformation and text processing skills including humanization, voice calibration, and AI pattern detection",
+  "skills": "skills/"
+}

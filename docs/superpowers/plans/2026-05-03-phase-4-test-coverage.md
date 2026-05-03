@@ -1,6 +1,6 @@
 # Phase 4 — Test Coverage at v1.0 Bar Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Reach the v1.0 quality bar — Layer A complete (already done in Phases 1–3), Layer B evals for **every skill** in every plugin (with regression baselines committed), and Layer C integration tests covering all 6 native CLIs (Tier 1a + 1b) plus Tier 2 adapters.
 
@@ -33,7 +33,7 @@ Recommended dispatch: chunk the per-skill eval tasks into batches of 10 parallel
 - Create: `tests/evals/conftest.py`
 - Create: `tests/unit/test_judge.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/test_judge.py"""
@@ -56,7 +56,7 @@ def test_judge_returns_float_in_range() -> None:
         assert 1.0 <= score <= 5.0
 ```
 
-- [ ] **Step 2: Implement `tests/evals/_judge.py`**
+- [x] **Step 2: Implement `tests/evals/_judge.py`**
 
 ```python
 """Shared LLM judge for Layer B evals — uses Claude Haiku 4.5 by default."""
@@ -141,13 +141,13 @@ def update_baseline(skill_path: str, case_id: str, score: float) -> None:
     BASELINE_FILE.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
 ```
 
-- [ ] **Step 3: Initial baseline file**
+- [x] **Step 3: Initial baseline file**
 
 ```bash
 echo '{}' > tests/evals/_baseline_scores.json
 ```
 
-- [ ] **Step 4: Implement `tests/evals/conftest.py`**
+- [x] **Step 4: Implement `tests/evals/conftest.py`**
 
 ```python
 """Eval-specific fixtures + CLI flag for baseline updates."""
@@ -167,7 +167,7 @@ def update_baselines(request) -> bool:
     return request.config.getoption("--update-baselines")
 ```
 
-- [ ] **Step 5: Run the unit test**
+- [x] **Step 5: Run the unit test**
 
 ```bash
 pytest tests/unit/test_judge.py -v
@@ -182,7 +182,7 @@ Expected: 1 passing.
 - Create: `tests/evals/_invoke.py`
 - Create: `tests/unit/test_invoke.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/test_invoke.py"""
@@ -204,7 +204,7 @@ def test_invoke_skill_uses_claude_api() -> None:
         assert result == "Skill output here"
 ```
 
-- [ ] **Step 2: Implement `tests/evals/_invoke.py`**
+- [x] **Step 2: Implement `tests/evals/_invoke.py`**
 
 ```python
 """Invoke a skill against Claude Haiku 4.5 and return its output."""
@@ -230,7 +230,7 @@ def invoke_skill(skill_body: str, user_input: str, context: str | None = None) -
     return message.content[0].text
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/test_invoke.py -v
@@ -245,7 +245,7 @@ pytest tests/unit/test_invoke.py -v
 - Create: `tests/evals/writing/humanize/rubric.md`
 - Create: `tests/evals/writing/humanize/test_humanize.py`
 
-- [ ] **Step 1: Write `inputs.json`**
+- [x] **Step 1: Write `inputs.json`**
 
 ```json
 {
@@ -279,7 +279,7 @@ pytest tests/unit/test_invoke.py -v
 }
 ```
 
-- [ ] **Step 2: Write `rubric.md`**
+- [x] **Step 2: Write `rubric.md`**
 
 ```markdown
 Score the output 1-5 on each criterion. Return the AVERAGE.
@@ -295,7 +295,7 @@ Score the output 1-5 on each criterion. Return the AVERAGE.
 5. **No new tells introduced** — doesn't substitute one AI pattern for another (e.g., replacing em-dashes with semicolons everywhere). Score 5 if cleanly humanized; 1 if just shuffled patterns.
 ```
 
-- [ ] **Step 3: Write `test_humanize.py`**
+- [x] **Step 3: Write `test_humanize.py`**
 
 ```python
 """tests/evals/writing/humanize/test_humanize.py"""
@@ -335,7 +335,7 @@ def test_humanize_quality(case, update_baselines) -> None:
     assert_no_regression(score, baseline, tolerance=0.3)
 ```
 
-- [ ] **Step 4: Generate baselines**
+- [x] **Step 4: Generate baselines**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -345,7 +345,7 @@ cat tests/evals/_baseline_scores.json
 ```
 Expected: 5 cases scored; baseline file populated.
 
-- [ ] **Step 5: Re-run without `--update-baselines` to verify regression detection works**
+- [x] **Step 5: Re-run without `--update-baselines` to verify regression detection works**
 
 ```bash
 pytest tests/evals/writing/humanize -v
@@ -393,32 +393,32 @@ for batch in chunks(skills, size=10):
 
 **Per-skill task template (each subagent runs this):**
 
-- [ ] **Step 1: Read the SKILL.md to derive the eval inputs**
+- [x] **Step 1: Read the SKILL.md to derive the eval inputs**
 
 ```bash
 cat plugins/<plugin>/skills/<skill>/SKILL.md
 ```
 
-- [ ] **Step 2: Write `tests/evals/<plugin>/<skill>/inputs.json`**
+- [x] **Step 2: Write `tests/evals/<plugin>/<skill>/inputs.json`**
 
 5–10 cases. Each case has `id`, `input`, optional `context`. Inputs should exercise the skill's stated trigger conditions.
 
-- [ ] **Step 3: Write `tests/evals/<plugin>/<skill>/rubric.md`**
+- [x] **Step 3: Write `tests/evals/<plugin>/<skill>/rubric.md`**
 
 5 criteria, each scored 1–5, averaged. Criteria derived from skill's stated purpose + quality bar.
 
-- [ ] **Step 4: Write `tests/evals/<plugin>/<skill>/test_<skill>.py`**
+- [x] **Step 4: Write `tests/evals/<plugin>/<skill>/test_<skill>.py`**
 
 Same structure as `test_humanize.py` (Task 3 Step 3). Adjust `SKILL_PATH` and the `pathlib` resolution to match the skill's location.
 
-- [ ] **Step 5: Generate baseline + verify**
+- [x] **Step 5: Generate baseline + verify**
 
 ```bash
 pytest tests/evals/<plugin>/<skill> --update-baselines -v
 pytest tests/evals/<plugin>/<skill> -v
 ```
 
-- [ ] **Step 6: Commit (one commit per skill, batched at end of phase)**
+- [x] **Step 6: Commit (one commit per skill, batched at end of phase)**
 
 ---
 
@@ -432,7 +432,7 @@ For each native CLI (Tier 1a + Tier 1b + Tier 2 = 9 CLIs), create one Docker-bas
 
 ### Per-CLI task template
 
-- [ ] **Step 1: Write the Dockerfile**
+- [x] **Step 1: Write the Dockerfile**
 
 ```dockerfile
 # tests/integration/dockerfiles/claude-code.Dockerfile (example for Claude)
@@ -445,7 +445,7 @@ RUN pip install -e scripts/agent_forge
 CMD ["bash"]
 ```
 
-- [ ] **Step 2: Write the integration test**
+- [x] **Step 2: Write the integration test**
 
 ```python
 """tests/integration/test_install_lifecycle_claude.py"""
@@ -488,11 +488,11 @@ def test_claude_install_writing_lifecycle() -> None:
     assert r.returncode == 0
 ```
 
-- [ ] **Step 3: Repeat per CLI**
+- [x] **Step 3: Repeat per CLI**
 
 CLIs to cover: `claude-code`, `copilot-cli`, `codex-cli`, `cursor`, `amp`, `gemini-cli`, `kilocode`, `opencode`, `crush`. Each gets its own Dockerfile + test file. Mark as `slow` and `requires_docker`.
 
-- [ ] **Step 4: Wire into `.github/workflows/ci-integration.yml`**
+- [x] **Step 4: Wire into `.github/workflows/ci-integration.yml`**
 
 ```yaml
 name: ci-integration
@@ -528,7 +528,7 @@ jobs:
 - Create: `tests/integration/test_update_propagation.py`
 - Create: `tests/integration/test_remove_clean.py`
 
-- [ ] **Step 1: Write update-propagation test**
+- [x] **Step 1: Write update-propagation test**
 
 ```python
 """End-to-end: install at SHA1, simulate upstream bump, run update, verify SHA2."""
@@ -560,7 +560,7 @@ def test_update_lifecycle_kilocode() -> None:
     assert "writing" in update_check.stdout
 ```
 
-- [ ] **Step 2: Write remove-clean test**
+- [x] **Step 2: Write remove-clean test**
 
 ```python
 """Verify that `agent-forge remove` leaves zero residual files."""
@@ -594,14 +594,14 @@ def test_remove_leaves_no_residue() -> None:
 
 ## Task Final+1: Commit Phase 4
 
-- [ ] **Step 1: Run full suite**
+- [x] **Step 1: Run full suite**
 
 ```bash
 pytest tests/unit -v
 pytest tests/evals -v -m "not slow"  # local sanity check
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add tests/evals/ tests/integration/ .github/workflows/ci-integration.yml
@@ -634,9 +634,9 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
 
 ## Self-Review
 
-- [ ] D6 (test layers A/B/C) covered ✓
-- [ ] Per-skill eval coverage requirement (D11) met by Tasks 4–N ✓
-- [ ] Regression detection mechanism implemented (D6) ✓
-- [ ] Integration tests cover all 9 CLIs (matches v1.0 native + Tier 2 set) ✓
+- [x] D6 (test layers A/B/C) covered ✓
+- [x] Per-skill eval coverage requirement (D11) met by Tasks 4–N ✓
+- [x] Regression detection mechanism implemented (D6) ✓
+- [x] Integration tests cover all 9 CLIs (matches v1.0 native + Tier 2 set) ✓
 
 **Done criteria:** every SKILL.md in plugins/ has a corresponding eval suite with committed baselines; full Layer A + B passes locally; Layer C workflow validates on a `release/v1.0.0-rc1` branch.

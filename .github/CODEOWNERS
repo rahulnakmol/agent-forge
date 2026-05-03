@@ -1,0 +1,13 @@
+# Default reviewer for everything
+*                                       @rahulnakmol
+
+# Plugin owners — add per-directory entries as community grows
+plugins/writing/                        @rahulnakmol
+plugins/prompts/                        @rahulnakmol
+plugins/msft-arch/                      @rahulnakmol
+plugins/pm/                             @rahulnakmol
+
+# Critical infrastructure — always reviewed by core
+scripts/agent_forge/translators/        @rahulnakmol
+.claude-plugin/marketplace.json         @rahulnakmol
+.github/workflows/                      @rahulnakmol

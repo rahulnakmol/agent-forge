@@ -1,0 +1,21 @@
+[project]
+name = "agent-forge-tests"
+version = "0.0.0"
+description = "Internal test harness for agent-forge — never published"
+requires-python = ">=3.11"
+dependencies = [
+    "pytest>=8.0",
+    "pytest-xdist>=3.5",
+    "anthropic>=0.40",
+    "jsonschema>=4.21",
+    "markdown-it-py>=3.0",
+    "pyyaml>=6.0",
+    "tomli>=2.0",
+]
+
+[tool.setuptools]
+packages = []
+
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"

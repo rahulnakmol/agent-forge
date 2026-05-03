@@ -1,0 +1,28 @@
+name: ci-evals
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - 'tests/evals/**'
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test harness
+        run: pip install -e tests
+      - name: Run Layer B evals (skipped until Phase 4)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY not set (likely a fork PR) — skipping evals"
+            exit 0
+          fi
+          pytest tests/evals -v -m "not slow"

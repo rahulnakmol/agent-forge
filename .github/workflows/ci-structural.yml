@@ -1,0 +1,27 @@
+name: ci-structural
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject design artifacts on main
+        if: github.base_ref == 'main' || github.ref == 'refs/heads/main'
+        run: |
+          if git diff --name-only origin/main...HEAD 2>/dev/null | grep -E '^docs/superpowers/'; then
+            echo "::error::docs/superpowers/** must live on the 'superpowers' branch, not main"
+            exit 1
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test harness
+        run: pip install -e tests
+      - name: Run Layer A tests
+        run: pytest tests/unit -v

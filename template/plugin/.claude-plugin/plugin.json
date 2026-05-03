@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/plugin.json",
+  "name": "REPLACE-WITH-PLUGIN-NAME",
+  "description": "REPLACE-WITH-ONE-LINE-DESCRIPTION",
+  "version": "0.1.0",
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com"
+  },
+  "license": "BSD-3-Clause"
+}

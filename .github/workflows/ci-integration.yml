@@ -1,0 +1,24 @@
+name: ci-integration
+on:
+  push:
+    branches: ['release/*']
+    tags: ['v*']
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cli: [claude-code, copilot-cli, codex-cli, cursor, amp, gemini-cli, kilocode, opencode, crush]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e tests
+      - name: Run integration test for ${{ matrix.cli }}
+        env:
+          CLI: ${{ matrix.cli }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: pytest "tests/integration/test_install_lifecycle_${CLI}.py" -v --tb=short

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "eleven_star_mapping",
+      "input": "Review this PRD for a task management feature. Features: create tasks, assign to team members, set due dates, mark complete. All features work well and match competitors.",
+      "context": "B2B SaaS, project management tool, 11-star framework assessment needed, features appear to be at star 4-5 parity level"
+    },
+    {
+      "id": "seven_dimension_scoring",
+      "input": "Score this PRD across all 7 weighted dimensions: Completeness (15%), Clarity (15%), Feasibility (15%), Ambition (15%), Differentiation (15%), Metric Alignment (10%), Story Quality (15%).",
+      "context": "PRD with all 12 sections, clear user stories, but no differentiated features beyond parity, metrics lack baselines, no narrative flow"
+    },
+    {
+      "id": "anchor_feature_identification",
+      "input": "Help us identify the anchor feature in our PRD and assess whether it reaches the 6-8 star sweet spot.",
+      "context": "PRD for a developer onboarding tool, features: code review, deployment tracking, incident alerts, AI-powered code review feedback"
+    },
+    {
+      "id": "chesky_principle_application",
+      "input": "Apply Brian Chesky's 5 principles to critique our PRD. We're building a customer feedback collection tool.",
+      "context": "Customer obsession, do things that don't scale, design the 11-star first, storytelling, challenge the default - apply all 5 lenses"
+    },
+    {
+      "id": "verdict_and_improvement_suggestions",
+      "input": "The PRD scored 5.5 average across 7 dimensions. What is the verdict and what are the top improvement suggestions?",
+      "context": "Score 5.5 falls in Major Revision range (4.0-5.9), P0-P1 improvements needed, structured suggestions by priority and type"
+    }
+  ]
+}

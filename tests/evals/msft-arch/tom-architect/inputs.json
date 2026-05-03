@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "finance_tom_design",
+      "input": "Design a Target Operating Model for our Finance function transformation to D365 F&O. We need L1-L4 process decomposition for Record-to-Report and Procure-to-Pay.",
+      "context": "Global manufacturing company, 3 regions, 5000 employees, legacy SAP ERP replacing, D365 F&O licensed, Fabric for analytics, 18-month transformation timeline"
+    },
+    {
+      "id": "maturity_assessment",
+      "input": "Assess the maturity of our HR processes across 3 regions and identify gaps against the target state.",
+      "context": "HR domain only, 3 regions (EMEA, NA, APAC), current state: Level 2 Developing across most processes, target: Level 4 Managed, 2000 HR staff globally"
+    },
+    {
+      "id": "ai_augmentation_overlay",
+      "input": "Build an AI augmentation overlay for our Supply Chain Management processes. Classify each L2 process as Autonomous, Human-in-the-Loop, Copilot Assist, RPA, or Human Only.",
+      "context": "SCM domain: Procurement, Inventory, Demand Planning, Supplier Management, Logistics, L1-L2 depth, Azure OpenAI available, Power Automate and D365 SCM in use"
+    },
+    {
+      "id": "technology_capability_mapping",
+      "input": "Map our Procurement capability requirements to Microsoft technology. We need workflow automation, supplier collaboration, spend analytics, and contract management.",
+      "context": "D365 F&O for core procurement, Power Platform for workflows, Fabric for analytics, Azure for integration, supplier portal needed"
+    },
+    {
+      "id": "tom_deliverable_package",
+      "input": "Produce the full TOM deliverable package for a Cyber Security function transformation: capability map diagram, maturity assessment, technology mapping, and KPI framework.",
+      "context": "Cyber Security domain, 150-person security team, moving from reactive to proactive security posture, Microsoft Sentinel and Defender stack, Level 2 current maturity, Level 4 target"
+    }
+  ]
+}

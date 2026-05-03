@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "multi_platform_technology_mapping",
+      "input": "Map our Finance capabilities to the appropriate enterprise platform. We use SAP for core ERP, Salesforce for CRM, and ServiceNow for IT service management.",
+      "context": "pm TOM architect supports SAP, Oracle, Salesforce, Workday, ServiceNow - not Microsoft-only, capability mapping to selected platform"
+    },
+    {
+      "id": "seven_phase_workflow_compliance",
+      "input": "Design a TOM for our HR transformation. We want to jump straight to technology mapping since we already know we're moving to Workday.",
+      "context": "7-phase workflow: Discover > Scope > Analyze > Design > Map > Visualize > Deliver, phases are sequential, cannot skip to phase 5 without phases 1-4"
+    },
+    {
+      "id": "ai_augmentation_classification",
+      "input": "Classify our procurement processes for AI augmentation: Purchase Order approval (manager reviews AI-ranked requests), Invoice matching (exact rules, no judgment), Strategic supplier negotiation (complex judgment required).",
+      "context": "5 AI categories: Autonomous, Human-in-the-Loop, Copilot Assist, RPA, Human Only - classify each process correctly"
+    },
+    {
+      "id": "maturity_gap_driven_priorities",
+      "input": "Our supply chain processes score Level 2 (Developing) on Demand Planning and Level 1 (Initial) on Supplier Risk Management. Which should be the first epic?",
+      "context": "Maturity-gap-driven epic ordering: larger gaps = higher priority, L1 gap is more urgent than L2 gap, epic-decompose feeds from TOM analysis"
+    },
+    {
+      "id": "tom_deliverable_package",
+      "input": "Produce the full TOM deliverable package for our Sustainability function transformation including diagrams, deck, and workbook.",
+      "context": "Sustainability domain, Mermaid diagrams required, 15-slide PPTX deck structure, 6-sheet XLSX workbook with capability register/maturity/KPI/tech mapping/RACI/AI augmentation"
+    }
+  ]
+}

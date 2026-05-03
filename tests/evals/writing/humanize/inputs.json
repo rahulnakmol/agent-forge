@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "ai_pattern_em_dashes",
+      "input": "I am thrilled to announce — and this is truly remarkable — that we are launching our amazing new product.",
+      "context": "user wants this rewritten in a natural human voice"
+    },
+    {
+      "id": "corporate_jargon",
+      "input": "We are leveraging synergies to deliver value-added solutions that drive operational excellence across the enterprise.",
+      "context": "humanize for a casual blog post"
+    },
+    {
+      "id": "ai_overclaim",
+      "input": "This revolutionary, game-changing technology will fundamentally transform how every business operates.",
+      "context": "rewrite without exaggeration"
+    },
+    {
+      "id": "passive_voice_excess",
+      "input": "It is recommended that the proposal be considered by the committee. The decision will be communicated by next week.",
+      "context": "make active and direct"
+    },
+    {
+      "id": "throat_clearing_opener",
+      "input": "I'd like to take a moment to discuss the various ways in which we can potentially explore the possibility of considering a new approach.",
+      "context": "cut throat-clearing"
+    }
+  ]
+}

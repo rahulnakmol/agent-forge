@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "managed_identity_selection",
+      "input": "We have 3 Azure services: an App Service that reads from Key Vault, an AKS pod that calls Azure SQL, and a shared API Management instance used by multiple services. How should each authenticate to Azure resources?",
+      "context": "All services run on Azure, no on-premises components, Entra ID tenant, production environment"
+    },
+    {
+      "id": "workload_identity_federation",
+      "input": "Our GitHub Actions pipelines currently use a service principal with a client secret to deploy to Azure. We want to eliminate long-lived secrets. What's the replacement approach?",
+      "context": "GitHub Actions CI/CD, Azure subscription, Terraform for IaC, multiple environments (dev/staging/prod)"
+    },
+    {
+      "id": "conditional_access_baseline",
+      "input": "We need to implement a Conditional Access baseline for our enterprise Entra ID tenant. We have 500 employees, some accessing from personal devices, and admin accounts that need extra protection.",
+      "context": "Entra ID P2 licensed, some users on unmanaged personal devices, admin accounts with privileged roles, legacy auth apps still in use"
+    },
+    {
+      "id": "external_id_vs_b2c",
+      "input": "We're building a customer-facing application where external customers need to sign in with social providers (Google, Facebook) or email/password. Should we use Azure AD B2C or Entra External ID?",
+      "context": "Greenfield CIAM scenario, new customers only (not migrating existing), need social providers, branded sign-in experience required"
+    },
+    {
+      "id": "pim_rbac_design",
+      "input": "Our team has 5 developers with permanent Contributor access to our production subscription. Security audit flagged this as a risk. How do we implement least-privilege access for production?",
+      "context": "Entra ID P2 licensed, Azure subscription with production workloads, developers need occasional access for deployments and troubleshooting"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "tagging_strategy",
+      "input": "Design a tagging strategy and enforcement policy for our Azure resources. We have 5 teams deploying resources across 3 subscriptions. Currently tagging compliance is below 20%.",
+      "context": "Enterprise Agreement, 3 subscriptions, Azure Policy available, Terraform for IaC, finance team requires cost allocation by team"
+    },
+    {
+      "id": "commitment_vehicle_selection",
+      "input": "We run 200 D-series VMs continuously for our production workloads and 50 additional VMs that scale up during business hours. We also have variable workloads on Container Apps. What commitment vehicles should we use?",
+      "context": "Enterprise Agreement, 12-month runway confirmed for production, Windows Server with existing licenses, Azure Hybrid Benefit applicable"
+    },
+    {
+      "id": "showback_vs_chargeback",
+      "input": "Our engineering teams don't know their Azure costs. Finance wants each team to be billed for their cloud spend. How should we implement cost visibility and allocation?",
+      "context": "5 engineering teams, current tagging compliance 40%, teams don't have individual budgets yet, EA subscription"
+    },
+    {
+      "id": "cost_anomaly_detection",
+      "input": "Our Azure spend increased 150% last month due to a misconfigured auto-scaling policy. How do we configure cost anomaly detection to catch this earlier?",
+      "context": "Azure Cost Management, multiple subscriptions, Azure Monitor action groups available, on-call team uses PagerDuty"
+    },
+    {
+      "id": "right_sizing_playbook",
+      "input": "Azure Advisor says 30 of our VMs are over-provisioned. How do we safely right-size them without impacting production performance?",
+      "context": "Production VMs, mixed workloads (web servers, databases, background jobs), Azure Monitor metrics available, 30-day usage history"
+    }
+  ]
+}

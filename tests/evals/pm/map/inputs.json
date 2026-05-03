@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "persona_profile_generation",
+      "input": "Build persona profiles for our customer support automation initiative. Key stakeholders: customers submitting tickets, support agents resolving them, and the support manager overseeing the team.",
+      "context": "Mode A SaaS, analysis file available with stakeholder register, 3 primary actors identified, behavior-feelings-journey template"
+    },
+    {
+      "id": "current_state_flow_with_pain_points",
+      "input": "Map the current state customer support ticket flow from submission to resolution, highlighting where the bottlenecks are.",
+      "context": "Mode A, current average resolution time 4 days vs 1 day target, manual triage step identified as bottleneck, 60% tickets require escalation"
+    },
+    {
+      "id": "target_state_flow_design",
+      "input": "Design the target state process flow for the same support ticket journey with AI triage and automated routing.",
+      "context": "AI triage reduces manual work, automated routing eliminates escalation queue, target: 4-hour resolution for L1 tickets"
+    },
+    {
+      "id": "diagram_styling_conventions",
+      "input": "What color coding conventions should be used in the process flow diagrams to distinguish current-state pain points from target-state improvements?",
+      "context": "Mermaid diagrams, map skill conventions: gray for current-state, red for pain points, blue for target-state, green for improvements"
+    },
+    {
+      "id": "mode_b_handoff_routing",
+      "input": "After completing the Business Understanding Document for our procurement transformation, which skill should we hand off to and what gets passed?",
+      "context": "Mode B consulting, process inventory complete, actor personas defined, as-is flows mapped, classification: Process Automation"
+    }
+  ]
+}

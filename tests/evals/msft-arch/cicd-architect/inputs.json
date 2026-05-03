@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "github_actions_oidc",
+      "input": "Design a GitHub Actions pipeline to deploy a .NET API to Azure App Service. We need secure Azure authentication without storing secrets, and the pipeline should run for PRs and main branch separately.",
+      "context": "GitHub-hosted org, Azure subscription, no compliance gates required"
+    },
+    {
+      "id": "gitops_aks",
+      "input": "We deploy 8 microservices to AKS across dev, staging, and production environments. We want GitOps-based deployments where a Git commit automatically syncs to the cluster. What approach should we use?",
+      "context": "AKS cluster already running, GitHub as SCM, team prefers Azure-native tools"
+    },
+    {
+      "id": "ring_deployment_strategy",
+      "input": "We want to roll out our new Container Apps revision progressively - starting with 1% of traffic, then 10%, 50%, and finally 100%. How do we implement ring deployments with automatic health gates?",
+      "context": "Azure Container Apps, stateless HTTP service, GitHub Actions for CI"
+    },
+    {
+      "id": "terraform_pr_workflow",
+      "input": "Our team pushes Terraform changes and applies them locally to production. We need to enforce that: plan is shown in PR comments, apply only happens after merge, and no direct local applies to shared environments.",
+      "context": "GitHub org, Terraform for Azure infrastructure, 5-person DevOps team"
+    },
+    {
+      "id": "conventional_commits_dependabot",
+      "input": "We want to enforce Conventional Commits in all PRs and set up Dependabot to auto-merge minor/patch dependency updates when tests pass. How should we configure this?",
+      "context": "GitHub repository with NuGet, npm, and GitHub Actions dependencies"
+    }
+  ]
+}

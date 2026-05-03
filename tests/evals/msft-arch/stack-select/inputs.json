@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "citizen_dev_departmental_app",
+      "input": "A department manager wants to build an app to track employee training completions. They have Power Apps licenses and no development team. Which stack should they use?",
+      "context": "Power Apps licensed, M365 tenant, 50 users, no IT developers, data in SharePoint lists currently"
+    },
+    {
+      "id": "enterprise_external_api",
+      "input": "We need to build a customer-facing REST API that integrates with our Power Platform workflows and requires custom business logic that Power Automate cannot handle alone. What stack do we select?",
+      "context": "200,000 external API consumers, complex pricing logic, existing Power Platform deployment, Azure subscription available, 24/7 SLA required"
+    },
+    {
+      "id": "high_scale_microservices",
+      "input": "We're building a real-time financial trading platform with microservices, event streaming, and strict latency requirements. Select the appropriate Microsoft stack.",
+      "context": "Sub-100ms latency required, 500,000 transactions per day, Kubernetes expertise in team, Azure subscription, Kafka-style messaging needed"
+    },
+    {
+      "id": "d365_erp_crm_selection",
+      "input": "A manufacturing company needs to replace their legacy ERP for finance and supply chain management while also modernizing their sales CRM. Help them select the right D365 stack composition.",
+      "context": "2000 employees, 3 regions, existing legacy ERP, D365 licenses budgeted, Power BI for reporting, Azure available"
+    },
+    {
+      "id": "stack_challenge_validation",
+      "input": "A startup says they want Stack A (Power Apps only) for their new B2C e-commerce platform expecting 50,000 daily users with real-time inventory, payment processing, and personalized recommendations.",
+      "context": "Stack A initially requested, B2C scale, payment processing required, real-time inventory, AI recommendations planned"
+    }
+  ]
+}

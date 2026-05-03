@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "technique_auto_selection",
+      "input": "Build me a prompt for analyzing customer churn. I need to figure out why customers leave after month 3, what patterns they share, and what interventions might retain them. There's a lot of ambiguity in the data.",
+      "context": "Analytical task with ambiguity, multi-step reasoning required, no examples provided, high-stakes business decision output"
+    },
+    {
+      "id": "artifact_voice_humanize",
+      "input": "I need a prompt to generate a board-level executive report on our Q3 product performance. Should include metrics, highlights, challenges, and strategic recommendations.",
+      "context": "Artifact: Document (DOCX), board meeting setting, formal tone required, humanize skill integration mandatory for document artifacts"
+    },
+    {
+      "id": "hardening_patterns_application",
+      "input": "Create a prompt for generating SQL queries from natural language descriptions. The output needs to be syntactically correct SQL, avoid table scans, and only use tables from our schema.",
+      "context": "Multiple hard constraints (syntax, performance, schema), factual accuracy critical, generic-prone task, code output"
+    },
+    {
+      "id": "few_shot_technique",
+      "input": "Help me build a prompt to classify customer support tickets into categories. I have examples of correctly classified tickets I can provide.",
+      "context": "Examples available (few-shot signal), classification task, consistent output format needed, 50 categories"
+    },
+    {
+      "id": "adaptive_depth_light",
+      "input": "Build me a prompt to summarize meeting notes.",
+      "context": "Simple task, clear category (Query/Answer or light document), under 2 sentences, Light depth: 3-4 questions total"
+    }
+  ]
+}

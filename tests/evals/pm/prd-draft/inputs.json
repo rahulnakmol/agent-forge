@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "twelve_section_prd",
+      "input": "Draft a PRD for the User Onboarding epic. The epic covers: account creation, email verification, profile setup wizard, and first value moment.",
+      "context": "Mode A SaaS, understanding doc available, 3 personas: new user, power user, admin, Fibonacci story points, e-learning platform"
+    },
+    {
+      "id": "invest_user_stories",
+      "input": "Write user stories for the Payment Processing epic. Include stories for checkout, saved payment methods, and refund requests.",
+      "context": "PRD draft mode, INVEST compliance required, As-a/I-want/So-that format, 3-8 Given-When-Then acceptance criteria per story, MH/SH/CH priority"
+    },
+    {
+      "id": "story_persona_enforcement",
+      "input": "We have user stories written as 'As a user, I want to see my order history...' Can we use this format?",
+      "context": "prd-draft quality rule: As a user is never acceptable, must reference named persona from Section 2, 3 defined personas in this PRD"
+    },
+    {
+      "id": "negative_acceptance_criteria",
+      "input": "Our user stories all have happy path acceptance criteria. Do we need to add error scenarios?",
+      "context": "prd-draft rule: every story needs at least one happy path, one boundary, and one error/negative AC - happy path only is invalid"
+    },
+    {
+      "id": "story_priority_distribution",
+      "input": "All 15 user stories in our PRD are marked Must Have. Is this acceptable?",
+      "context": "prd-draft rule: at least 60% MH is acceptable but 100% MH needs re-prioritization, max 20% Could Have, MH first ordering"
+    }
+  ]
+}

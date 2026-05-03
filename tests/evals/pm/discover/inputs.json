@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "mode_detection_saas",
+      "input": "Help me understand why our free trial users are not converting to paid plans. About 80% drop off after day 3.",
+      "context": "B2C SaaS product, project management tool, 10,000 trial starts per month, 20% conversion target, no current analysis"
+    },
+    {
+      "id": "mode_detection_consulting",
+      "input": "We need to decompose the procurement transformation outlined in our strategy document. The goal is to identify process gaps and automation opportunities.",
+      "context": "Consulting engagement, procurement transformation, 3 regions, existing ERP systems, SOW scoping required"
+    },
+    {
+      "id": "initiative_classification",
+      "input": "Our finance team manually reconciles 500 invoices per day by comparing PDFs against ERP records. Categorize this initiative.",
+      "context": "Manual process, repetitive cognitive task, structured data (PDFs and ERP), AI/automation candidate assessment needed"
+    },
+    {
+      "id": "root_cause_analysis",
+      "input": "Customer support tickets have tripled in the last quarter. Help us figure out why and what to address.",
+      "context": "SaaS product, 3x ticket volume, recent product update 2 months ago, no root cause analysis done, multiple hypotheses"
+    },
+    {
+      "id": "solution_first_pushback",
+      "input": "We need to build a customer dashboard with real-time analytics, drag-and-drop widgets, and AI-powered insights.",
+      "context": "User has described a solution, not a problem statement, PM should reframe to understand the underlying business problem"
+    }
+  ]
+}

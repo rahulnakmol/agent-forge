@@ -1,0 +1,11 @@
+Score the output 1-5 on each criterion. Return the AVERAGE.
+
+1. **SAFe Field Schema Accuracy** — Correctly maps all 7 work item types to their ADO SAFe field schemas. Key distinctions: Technical User Story has Value Area = Architectural and State Reason = "Moved to state New"; Risk uses Likelihood (1-5) and Impact (A-E) and Risk Assessment (1-5); Impediment includes root cause and possible solutions; CI Item includes expected benefit. Score 5 if all 7 types are correctly mapped with their distinguishing fields; 1 if types share the same fields or key distinctions are missing.
+
+2. **Parent-Child Row Ordering** — Enforces parent-before-child row ordering: Epics first, then their Features, then Stories under each Feature, then Risks, Impediments, CI Items. Explains this is required for ADO CSV import to establish hierarchy. Does not produce a flat list or random ordering. Score 5 if parent-before-child ordering is correctly specified and explained; 1 if ordering is arbitrary or the hierarchy constraint is ignored.
+
+3. **ADO Context Collection** — Collects all required ADO context before generating: Area Path, Iteration Path prefix, PI or Release number, and Default Priority. Does not generate the workbook without these values. Score 5 if all four context fields are requested before generation; 1 if workbook is generated without collecting ADO-specific context.
+
+4. **HTML Formatting for Rich Fields** — Correctly identifies that Description and Acceptance Criteria fields must be HTML-formatted for ADO import (not plain Markdown). Acknowledges the specific ADO import format requirement. Score 5 if HTML formatting for Description and Acceptance Criteria is explicitly addressed; 1 if Markdown is assumed to work without noting the HTML requirement.
+
+5. **Output Artifacts Completeness** — Produces two output artifacts: (1) Excel workbook at `{project}/specs/backlog/{epic-name}-ado-import.xlsx` for import and (2) summary appended to `{project}/specs/backlog/backlog-summary.md` with PRD reference, generation date, item counts by type, story point totals per epic, and risk register summary. Score 5 if both artifacts with all required content are described; 1 if only the workbook is mentioned without the summary artifact.

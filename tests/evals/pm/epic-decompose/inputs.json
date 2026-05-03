@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "dive_validation",
+      "input": "Extract epics from our onboarding initiative. We're thinking: User Registration, Profile Setup, Guided Tour, and also 'Make the app better'.",
+      "context": "Mode A SaaS, understanding doc with 4 recommended capabilities, 'Make the app better' is vague and needs DIVE testing"
+    },
+    {
+      "id": "epic_count_governance",
+      "input": "We've identified 12 epics for our platform redesign project. Here's the full list: [Auth, Payments, Notifications, Analytics, Admin, Reporting, Mobile, API, Search, Integrations, Onboarding, Settings].",
+      "context": "6-month timeline, 5 developers, 12 epics flagged - scope is a program not a project, escalation needed"
+    },
+    {
+      "id": "mode_b_tom_extraction",
+      "input": "Extract epics from our Finance TOM. The maturity assessment shows gaps in Invoice Automation (Level 2→4), Financial Close (Level 2→3), and Compliance Reporting (Level 1→3).",
+      "context": "Mode B consulting, TOM artifacts available, maturity gaps drive epic ordering by gap priority"
+    },
+    {
+      "id": "persona_validation",
+      "input": "We proposed these epics: Customer Portal, Data Sync, and 'System Improvements'. Each epic should have a persona - who would use 'System Improvements'?",
+      "context": "Epic without named persona is invalid, All users is not a persona, system improvements needs persona or splitting"
+    },
+    {
+      "id": "approval_gate",
+      "input": "We've validated 4 epics using DIVE. Should we write the epic manifest now and start drafting PRDs?",
+      "context": "DIVE validation complete, user has not explicitly confirmed the list yet, approval gate must be passed before writing manifest"
+    }
+  ]
+}

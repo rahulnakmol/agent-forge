@@ -1,0 +1,11 @@
+Score the output 1-5 on each criterion. Return the AVERAGE.
+
+1. **Defender for Cloud Plan Coverage** — Correctly maps resource types (VMs, AKS, App Service, SQL, Storage, Key Vault) to minimum and production Defender plans from the plan table. Does not miss any resource category in scope. Score 5 if all resource types are correctly mapped to appropriate plans; 1 if plans are omitted or incorrectly assigned.
+
+2. **Key Vault RBAC over Access Policies** — Always recommends RBAC permission model (never legacy access policies) for Key Vault. Assigns correct roles: `Key Vault Secrets User` for app Managed Identities, `Key Vault Secrets Officer` for CI/CD service principals, `Key Vault Administrator` only for break-glass. Recommends Key Vault reference syntax over inline secrets. Score 5 if RBAC model is correctly designed with right roles; 1 if access policies are recommended or roles are incorrect.
+
+3. **Private Endpoints for Production Data Services** — Recommends private endpoints for every production data service (Storage, SQL, Cosmos DB, Key Vault, Service Bus) and disabling public access after verification. Does not accept public endpoints without WAF + IP restrictions justified by ADR. Score 5 if private endpoint recommendation is complete and unconditional for production; 1 if public endpoints are accepted without security controls.
+
+4. **Supply Chain and Branch Protection Non-Negotiables** — Covers: SBOM generation (syft/CycloneDX) in CI, container image scanning (Trivy/Defender for Containers) blocking High/Critical CVEs, branch protection + signed commits + dependency review on all repos. Does not treat these as optional. Score 5 if all supply chain controls are recommended as non-negotiable; 1 if supply chain security is omitted or treated as optional.
+
+5. **STRIDE-A Handoff Artifacts** — Produces or references the required security design artifacts: Defender plan enablement checklist, Key Vault RBAC assignment table, network security diagram with NSG/ASG flows, OWASP Top 10 control mapping, supply chain checklist, and open findings backlog ordered by STRIDE-A severity. Score 5 if all required artifacts are produced or clearly referenced; 1 if output lacks structured artifacts.

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "terraform_vs_bicep",
+      "input": "Our team is starting a new Azure infrastructure project. Should we use Terraform or Bicep? We want the best long-term approach with no organizational constraints on tooling.",
+      "context": "Greenfield Azure project, 4 engineers with some Terraform experience, GitHub for source control, multiple environments needed"
+    },
+    {
+      "id": "avm_module_usage",
+      "input": "We need to provision an Azure Kubernetes Service cluster with Azure Container Registry, Key Vault, and a Log Analytics workspace using Terraform. How should we structure this using AVM modules?",
+      "context": "Terraform greenfield, azurerm provider, need to follow AVM module patterns, 3 environments (dev/staging/prod)"
+    },
+    {
+      "id": "remote_state_design",
+      "input": "Our team's Terraform state is stored locally in terraform.tfstate files checked into git. We need to move to a proper remote state solution for production environments.",
+      "context": "Multiple developers, Azure subscription, production workloads, state conflicts happening, no locking in place"
+    },
+    {
+      "id": "brownfield_import",
+      "input": "We have 50 existing Azure resources deployed manually that we need to bring under Terraform management. How do we safely import them without disrupting production?",
+      "context": "Existing Azure resources without IaC, azurerm provider, production workloads, potential drift between reality and desired state"
+    },
+    {
+      "id": "policy_as_code",
+      "input": "We need to enforce organizational guardrails on our Terraform: no public storage accounts, all resources must have required tags, no resources in non-approved regions. How do we implement policy-as-code?",
+      "context": "GitHub Actions CI/CD, Terraform codebase, multiple teams contributing, compliance requirements"
+    }
+  ]
+}

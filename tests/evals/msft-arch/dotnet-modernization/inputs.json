@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "strangler_fig_vs_big_bang",
+      "input": "We have a 300,000 LOC .NET Framework 4.7.2 monolith with WCF services, EF6, and ASP.NET Web Forms. We want to modernize to .NET 9. Should we use strangler fig or big bang migration?",
+      "context": "Active codebase, 20 developers, 15% test coverage, 8 WCF endpoints used by external partners, 2-year modernization budget"
+    },
+    {
+      "id": "wcf_to_grpc_migration",
+      "input": "We have 6 internal WCF services used by other .NET applications within our organization. We want to migrate them to modern protocols as part of our .NET 9 modernization. What's the approach?",
+      "context": "All consumers are internal .NET apps we control, no external consumers, some services have complex bindings"
+    },
+    {
+      "id": "ef6_to_efcore_migration",
+      "input": "Our application uses EF6 with lazy loading, EntitySQL queries, and EDMX models. We need to migrate to EF Core. What are the key risks and migration steps?",
+      "context": ".NET Framework 4.8 app, EF6.4, SQL Server backend, lazy loading used extensively, some EntitySQL queries in reports"
+    },
+    {
+      "id": "webforms_to_blazor",
+      "input": "We have an ASP.NET Web Forms application with 150 pages, event-driven code-behind, and heavy use of ViewState. We want to modernize the UI as part of our .NET 9 migration. What's the recommended approach?",
+      "context": "Internal intranet application, 100 users, ASP.NET Web Forms 4.7, WebSocket support needed, moderate traffic"
+    },
+    {
+      "id": "windows_container_fallback",
+      "input": "We have a .NET Framework 4.5 application that cannot be fully migrated to .NET 8 in the next 12 months due to dependency on a vendor library with no .NET Core version. What are our options?",
+      "context": "Critical production app, vendor says .NET Core support is 18+ months away, containerization needed for cloud deployment"
+    }
+  ]
+}

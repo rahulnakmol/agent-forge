@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "linear_issue_creation_flow",
+      "input": "Create Linear issues from our payment processing backlog. We have 1 epic, 3 features, and 10 user stories.",
+      "context": "Team: Platform Engineering, Project: Q3 Payments, Linear MCP server connected, backlog file ready"
+    },
+    {
+      "id": "linear_context_collection",
+      "input": "What context needs to be collected before creating Linear issues from a backlog?",
+      "context": "Linear MCP, team name required, project name required, cycle optional, team/project must be verified to exist"
+    },
+    {
+      "id": "linear_label_management",
+      "input": "Before creating issues, how do we ensure the required labels exist in Linear for work item types?",
+      "context": "Linear MCP, list_issue_labels to check existing, create_issue_label for missing: epic, feature, risk, impediment, ci-item"
+    },
+    {
+      "id": "linear_priority_mapping",
+      "input": "How should backlog priority values (1=Must, 2=Should, 3=Could) map to Linear priority levels?",
+      "context": "Linear priority levels: Urgent, High, Medium, Low, None; backlog priority 1/2/3 scale"
+    },
+    {
+      "id": "linear_parent_child_linking",
+      "input": "How do parent-child relationships get established when creating Linear issues from a hierarchical backlog?",
+      "context": "Epic issues created first capturing IDs, features with parentId set to epic ID, stories with parentId set to feature ID"
+    }
+  ]
+}

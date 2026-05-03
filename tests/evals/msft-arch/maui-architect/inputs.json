@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "maui_vs_xamarin",
+      "input": "We have a Xamarin.Forms mobile app for iOS and Android. Our team wants to add Windows desktop support and upgrade our SDK. What's the migration path and why?",
+      "context": "Existing Xamarin.Forms 5.0 app, 50k LOC, moderate test coverage, iOS and Android stores deployed, team of 5 mobile developers"
+    },
+    {
+      "id": "mvvm_community_toolkit",
+      "input": "Design the MVVM architecture for our .NET MAUI app. We have 15 view models that need two-way binding, async commands, and property change notifications. What's the recommended approach?",
+      "context": ".NET MAUI 9, currently using custom ObservableObject base class with lots of boilerplate, 4 platforms targeted"
+    },
+    {
+      "id": "offline_first_sync",
+      "input": "Our field service mobile app must work without internet connectivity. Technicians record work order updates offline and sync when they return to connectivity. Design the offline-first data layer.",
+      "context": ".NET MAUI 9, iOS and Android, work orders updated in the field, sync to Azure backend on reconnect, conflict resolution needed"
+    },
+    {
+      "id": "push_notifications_setup",
+      "input": "We need to send push notifications to our MAUI app for iOS, Android, and Windows from a single backend. Notifications include job assignments, urgent alerts, and daily summary digests.",
+      "context": ".NET MAUI 9, ASP.NET Core backend on Azure, all 3 platforms need push support, 10,000 devices"
+    },
+    {
+      "id": "blazor_hybrid_decision",
+      "input": "We have an existing Blazor web app for our management portal. We want to build a companion mobile app. Should we use Blazor Hybrid in MAUI or native MAUI XAML? Our web and mobile UX are very similar.",
+      "context": ".NET MAUI 9, existing Blazor WASM web app, same data and business logic needed on mobile, iOS and Android targets"
+    }
+  ]
+}

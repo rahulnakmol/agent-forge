@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "tier_selection",
+      "input": "We have a multi-tenant SaaS OLTP workload currently at 800GB growing to 3TB in 2 years. Peak read TPS is 5x write TPS. RTO is 30 minutes, RPO is 5 minutes. Which Azure SQL tier should we use?",
+      "context": "Net-new workload, variable load patterns, cost matters but reliability is primary"
+    },
+    {
+      "id": "partition_strategy",
+      "input": "We have an audit log table growing by 50 million rows per month. Queries always filter by date range. Older data is rarely accessed but must be retained for 7 years. How should we partition this?",
+      "context": "Azure SQL Database, General Purpose tier, compliance retention requirements"
+    },
+    {
+      "id": "always_encrypted_pii",
+      "input": "We store customer SSN, email, and free-text medical notes in Azure SQL. We need to search by email equality, but SSN is never searched. Medical notes need range queries. How should we encrypt these columns?",
+      "context": "HIPAA-regulated healthcare application"
+    },
+    {
+      "id": "query_store_setup",
+      "input": "We have a production Azure SQL Database with performance regressions after recent index changes. Query Store is not enabled. How should we configure Query Store and diagnose the regression?",
+      "context": "Business Critical tier, production database, regression happened last week"
+    },
+    {
+      "id": "failover_groups",
+      "input": "Our Azure SQL Database needs cross-region disaster recovery. We need the app to automatically switch to the secondary region on failure. How should we configure failover groups and what are the caveats?",
+      "context": "Production workload, East US primary, West US secondary, auto-failover desired"
+    }
+  ]
+}

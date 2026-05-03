@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "permission_model_selection",
+      "input": "We're building a background service that processes employees' calendar events nightly to generate utilization reports. We also have a web app where users can view their own calendar. How should each authenticate to Graph?",
+      "context": "ASP.NET Core .NET 9, Managed Identity for background service, Entra ID for web app users, Microsoft Graph SDK v5+"
+    },
+    {
+      "id": "change_notifications_vs_polling",
+      "input": "Our application needs to know when new emails arrive in specific shared mailboxes within 30 seconds. We currently poll every 5 minutes. How should we redesign this?",
+      "context": "10 shared mailboxes, near-real-time requirement, ASP.NET Core webhook receiver, Azure Service Bus for reliability"
+    },
+    {
+      "id": "batch_request_optimization",
+      "input": "We call Microsoft Graph 15 times per page load to fetch user profile, presence, manager info, direct reports, recent files, and Teams membership for display in our directory app. How do we optimize this?",
+      "context": "Node.js frontend calling Graph on behalf of user, 200ms page load target, delegated permissions"
+    },
+    {
+      "id": "throttling_retry_strategy",
+      "input": "Our application is getting 429 Too Many Requests errors from Microsoft Graph during peak hours when we process bulk operations on SharePoint sites. How do we implement proper throttling handling?",
+      "context": ".NET 9, Microsoft Graph SDK v5+, SharePoint site operations, bulk processing of 1000 sites per run"
+    },
+    {
+      "id": "granular_permissions_sharepoint",
+      "input": "Our app needs to read files from specific SharePoint sites for specific teams. We don't want to grant access to all SharePoint content in the tenant. How do we implement granular SharePoint access?",
+      "context": "Daemon service with application permissions, 20 specific SharePoint sites, Entra ID app registration, least-privilege required"
+    }
+  ]
+}

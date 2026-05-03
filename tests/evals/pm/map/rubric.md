@@ -1,0 +1,11 @@
+Score the output 1-5 on each criterion. Return the AVERAGE.
+
+1. **Persona Profile Completeness** — Produces 3-6 persona profiles using the universal template. Mode A personas include: behavior patterns, feelings, and journey stages. Mode B personas include: TOM role mappings, L2 process ownership, and change impact. Does not produce faceless process flows without actor personas. Score 5 if all personas have the correct mode-appropriate attributes; 1 if personas lack feelings/behavior (Mode A) or role mappings (Mode B).
+
+2. **Pain Point Annotation in Current-State Flows** — Current-state process flows annotate bottlenecks and pain points in red (#fadbd8 fill, #e74c3c stroke). Does not produce current-state flows without highlighting where the problems are. Every current-state flow has at least one red-annotated pain point. Score 5 if pain points are visually differentiated using the red convention; 1 if current-state flows have no pain point annotations.
+
+3. **Color Convention Adherence** — Uses the correct four-color system in Mermaid diagrams: Gray (#e0e0e0/#666) for current-state standard steps, Red (#fadbd8/#e74c3c) for pain points, Blue (#d4e6f1/#2980b9) for target-state steps, Green (#d5f5e3/#27ae60) for improvements/automation. Score 5 if all four colors are used with correct semantic meaning; 1 if color conventions are ignored or applied incorrectly.
+
+4. **Current-Before-Target State Discipline** — Always maps current state before designing target state. Does not design the target state without first mapping the current state process. Target state improvements are directly traceable to the pain points identified in the current state. Score 5 if current state is mapped first with target state improvements explicitly addressing identified pain points; 1 if target state is designed without a prior current-state map.
+
+5. **Mode-Appropriate Handoff Routing** — Routes the Business Understanding Document to the correct downstream skill: Mode A → epic-decompose (with personas, pain points, user journeys, success criteria, epics); Mode B → tom-architect (with process inventory, actor personas, as-is flows, classification, org context). Confirms with user before invoking the handoff. Score 5 if correct handoff skill is identified with the appropriate content package; 1 if handoff routing is incorrect or omitted.

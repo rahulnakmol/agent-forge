@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "power_apps_canvas_a11y",
+      "input": "Our Power Apps canvas app has no AccessibleLabel set on any controls, and we're using default names like TextInput3 and Button5. Screen reader users are complaining. What do we need to fix?",
+      "context": "Production canvas app used by employees including those with disabilities"
+    },
+    {
+      "id": "blazor_route_focus",
+      "input": "After navigating between pages in our Blazor Server app, screen readers don't announce the new page. Users have to tab around to discover where they are. How do we fix this?",
+      "context": "Blazor Server app with multiple route-based pages"
+    },
+    {
+      "id": "wcag_color_contrast",
+      "input": "Our designer wants to use light gray text (#aaaaaa) on a white background for secondary information. Is this WCAG compliant? What contrast ratio do we need?",
+      "context": "Normal-size body text in a web application"
+    },
+    {
+      "id": "custom_modal_focus_trap",
+      "input": "We have a custom modal dialog built with divs and JavaScript. When it opens, focus jumps to the background. When users press Tab they leave the modal. How should we fix the focus management?",
+      "context": "Custom JavaScript modal overlay component"
+    },
+    {
+      "id": "aria_live_region",
+      "input": "Our app dynamically updates a status message when a form is submitted. Screen reader users don't hear the update. Should we use aria-live? What value should we use?",
+      "context": "Form submission status notifications in a web app"
+    }
+  ]
+}

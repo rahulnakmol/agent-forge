@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "rag_architecture",
+      "input": "We need to build a RAG system for our company's internal policy documents. Users ask natural language questions and need accurate, cited answers. What architecture should we use on Azure?",
+      "context": "Enterprise knowledge base with 10,000 PDF documents, 500 concurrent users"
+    },
+    {
+      "id": "copilot_studio_orchestrator",
+      "input": "We want to build an employee HR copilot that handles common HR questions, routes complex cases to HR staff, and integrates with our D365 HR module. Should we use Copilot Studio or build a custom agent?",
+      "context": "Microsoft 365 E5 licensed organization, 5,000 employees, Teams as primary collaboration tool"
+    },
+    {
+      "id": "multi_agent_architecture",
+      "input": "Our loan origination process involves document extraction, credit scoring, compliance checking, and decision making. We want to automate this with AI. How should we architect this?",
+      "context": "Financial services company, regulated environment, existing Azure infrastructure"
+    },
+    {
+      "id": "content_safety_guardrails",
+      "input": "We are deploying a customer-facing AI chatbot. What guardrails should we implement to prevent harmful outputs, prompt injection, and ensure responses stay on-topic?",
+      "context": "Public-facing chatbot for a retail bank, regulatory requirements apply"
+    },
+    {
+      "id": "model_selection",
+      "input": "We have a high-volume application processing 50,000 queries per day. 70% are simple FAQ lookups, 20% need reasoning, and 10% require complex analysis. How should we select and route to models cost-effectively?",
+      "context": "SaaS platform, cost optimization critical, Azure as cloud provider"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "prd_to_hierarchy",
+      "input": "Decompose this PRD into a hierarchical backlog. The PRD covers a customer portal with order tracking, payment history, and support ticket submission.",
+      "context": "Finalized PRD with 3 major capabilities, 50,000 customers, B2C portal, Fibonacci story point scale"
+    },
+    {
+      "id": "technical_stories_extraction",
+      "input": "The PRD describes user-facing features but we also need to capture all infrastructure, security, and DevOps requirements as technical stories.",
+      "context": "PRD with functional requirements, Azure deployment, GDPR compliance needed, CI/CD pipeline required, no existing technical stories identified"
+    },
+    {
+      "id": "seven_work_item_types",
+      "input": "What are the 7 work item types in the backlog hierarchy and how does each map to PRD content?",
+      "context": "PRD with epics, functional requirements, risks identified, known blockers, tech debt items, infrastructure needs"
+    },
+    {
+      "id": "acceptance_criteria_requirement",
+      "input": "We decomposed the PRD and have 20 user stories but some don't have acceptance criteria yet. Is that acceptable?",
+      "context": "backlog-decompose quality rule: every story must have testable acceptance criteria, Given/When/Then format preferred"
+    },
+    {
+      "id": "platform_handoff_routing",
+      "input": "After decomposing the PRD into backlog files, which exporter skill should we use if we want to push to Azure DevOps vs Linear vs GitHub Issues?",
+      "context": "Platform-neutral backlog files generated, team uses Azure DevOps with SAFe, alternative consideration for Linear"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "defender_plan_matrix",
+      "input": "We have an Azure subscription with VMs, AKS clusters, Azure SQL databases, App Service, and several storage accounts. Which Defender for Cloud plans should we enable for production?",
+      "context": "Production subscription, PCI-DSS compliance required, no existing Defender plans enabled, budget for security approved"
+    },
+    {
+      "id": "sentinel_workspace_topology",
+      "input": "We have 3 Azure tenants: one main enterprise tenant and two acquired company tenants. We need a unified SOC view but data must stay in each tenant's region (EU data residency). Design our Sentinel workspace topology.",
+      "context": "MSSP model, EU and US regions, separate billing per tenant required, Azure Lighthouse available"
+    },
+    {
+      "id": "analytics_rules_design",
+      "input": "Design the analytics rule strategy for our Sentinel deployment. We need to detect impossible travel, privileged account abuse, and anomalous storage access. Include MITRE ATT&CK mapping.",
+      "context": "Sentinel workspace deployed, Entra ID Sign-In logs connected, Azure Activity connected, Defender for Cloud connected"
+    },
+    {
+      "id": "soar_playbook_design",
+      "input": "We get 50 alerts per day for failed privileged sign-ins. We want to automatically: create a ticket in ServiceNow, notify the user's manager via Teams, and block the account if 5+ failures in 1 hour. Design the SOAR automation.",
+      "context": "Microsoft Sentinel, Logic Apps for playbooks, ServiceNow ITSM connected, Teams notifications available, PIM for privileged accounts"
+    },
+    {
+      "id": "threat_intelligence_integration",
+      "input": "We want to integrate threat intelligence from our ISAC feed (STIX/TAXII 2.1) and Microsoft Defender Threat Intelligence into Sentinel. How should we configure TI ingestion and use it in analytics rules?",
+      "context": "Sentinel workspace, TAXII 2.1 server URL available from ISAC, MDTI standard tier licensed"
+    }
+  ]
+}

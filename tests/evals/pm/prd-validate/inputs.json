@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "nine_check_validation",
+      "input": "Validate the user-onboarding PRD. It has all 12 sections, named personas, Given-When-Then ACs, but 2 open questions in Section 12 have no assigned owners.",
+      "context": "prd-validate reads PRD, runs all 9 checks, open questions without owners = PASS WITH WARNINGS (non-critical failure)"
+    },
+    {
+      "id": "critical_failure_detection",
+      "input": "Validate this PRD that has user stories written as 'As a user, I want...' and some stories with only one acceptance criteria.",
+      "context": "Check 2 fails (As a user persona), Check 3 may fail (AC count below 3), critical failures = FAIL verdict"
+    },
+    {
+      "id": "all_checks_coverage",
+      "input": "What are all 9 structural checks that prd-validate runs against a PRD?",
+      "context": "prd-validate validation checklist, all 9 checks with pass criteria, critical vs non-critical classification"
+    },
+    {
+      "id": "read_only_filter_behavior",
+      "input": "The PRD has issues with missing acceptance criteria. Can prd-validate fix them automatically?",
+      "context": "prd-validate is a read-only filter, never modifies PRD, reports issues for prd-draft to fix, strict separation of validation from authoring"
+    },
+    {
+      "id": "star_level_check",
+      "input": "Validate a PRD where the features table exists but doesn't have a Star Level column.",
+      "context": "Check 5: every feature must have a Star Level (1-11), missing column = check failure, verdict impact assessment"
+    }
+  ]
+}

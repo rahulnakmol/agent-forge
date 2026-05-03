@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "fit_gap_analysis",
+      "input": "We need D365 Customer Service for case management but our agents need to see a full 360-degree customer view including purchase history from our ERP. What's the fit-gap analysis and integration approach?",
+      "context": "D365 CE Sales already in use, SAP ERP for order history, 200 support agents, no Dataverse customizations yet"
+    },
+    {
+      "id": "d365_fo_finance_design",
+      "input": "Design a D365 Finance implementation for our multi-entity organization. We have 5 legal entities across 3 countries with intercompany transactions and consolidated reporting requirements.",
+      "context": "Greenfield D365 F&O implementation, Azure AD single tenant, Power BI for reporting, complex intercompany flows"
+    },
+    {
+      "id": "dual_write_integration",
+      "input": "We want to implement dual-write between D365 CE and D365 F&O so that customer and product data is synchronized in real-time. What are the risks and configuration approach?",
+      "context": "Both D365 CE and F&O deployed, same Entra ID tenant, data sync must be near-real-time, no data migration team available"
+    },
+    {
+      "id": "isv_solution_assessment",
+      "input": "Our field service team needs advanced scheduling optimization beyond what D365 Field Service offers out of the box. Should we extend D365 Field Service or look at an ISV solution from AppSource?",
+      "context": "D365 Field Service licensed, 500 field technicians, complex resource scheduling, geography-based optimization needed"
+    },
+    {
+      "id": "d365_security_model",
+      "input": "Design the security model for our D365 Sales implementation. Sales reps should only see their own opportunities. Managers should see their team's records. Directors should see all records in their region.",
+      "context": "D365 CE Sales, 3-tier hierarchy (rep/manager/director), 4 regions, some records are confidential and need field-level security"
+    }
+  ]
+}

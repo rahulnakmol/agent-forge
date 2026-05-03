@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "principle_quality_check",
+      "input": "Help us define our product principles. We're thinking: 'Quality matters', 'Be user-focused', 'Ship fast', 'Data-driven', and 'Team first'.",
+      "context": "B2B SaaS startup, 3 years old, Series A, 50-person company, product team of 8, constitution creation mode"
+    },
+    {
+      "id": "prioritization_framework",
+      "input": "We need a prioritization framework. Currently we have 45 feature requests and 3 different stakeholders each claiming their items are most important.",
+      "context": "Product constitution creation, Section 6 prioritization framework, scoring model and tiebreaker criteria needed"
+    },
+    {
+      "id": "eleven_star_cx_philosophy",
+      "input": "Help us define our Customer Experience Philosophy. Our product is a project management tool for engineering teams.",
+      "context": "Product constitution Section 4, star level target needed, over-investment areas, what 'great' looks like for this product"
+    },
+    {
+      "id": "constitution_review_cadence",
+      "input": "We wrote our product constitution 6 months ago. One of the sections hasn't been reviewed in 4 months. What should we do?",
+      "context": "Constitution Review mode, 90-day review rule, section flagging, last_reviewed dates, stale constitution risk"
+    },
+    {
+      "id": "research_bets_register",
+      "input": "We have 5 hypotheses about future product direction. How do we structure these as research bets?",
+      "context": "Product constitution Section 7, conviction levels required (high/medium/low), validation criteria, not just a feature wishlist"
+    }
+  ]
+}

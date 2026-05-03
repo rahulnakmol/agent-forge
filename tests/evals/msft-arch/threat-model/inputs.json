@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "stride_a_threat_model",
+      "input": "Produce a STRIDE-A threat model for our customer portal. It exposes REST APIs, handles PII, and uses an AI chatbot for customer support.",
+      "context": "Azure App Service, Cosmos DB with customer PII, Azure OpenAI GPT-4 chatbot, Entra ID authentication, 100,000 customers, GDPR in scope"
+    },
+    {
+      "id": "data_breach_blast_radius",
+      "input": "Calculate the regulatory blast radius for a potential data breach of our healthcare application that stores patient records.",
+      "context": "HIPAA-regulated, 500,000 patient records, PHI including diagnoses and treatment data, Azure SQL Database, US-based healthcare provider"
+    },
+    {
+      "id": "owasp_asi_ai_agent",
+      "input": "We're building an AI agent that autonomously processes customer refund requests and executes tool calls to update order management systems. Map the OWASP ASI Top-10 risks.",
+      "context": "Azure OpenAI with function calling, tool access to order management API, Cosmos DB, customer data access, no human-in-the-loop for small refunds"
+    },
+    {
+      "id": "attack_tree_construction",
+      "input": "Build an attack tree for the critical threat: an attacker extracting PII from our Cosmos DB through our public API.",
+      "context": "Public REST API, Cosmos DB with PII, API Management as gateway, Entra ID auth, no WAF currently, GDPR compliance required"
+    },
+    {
+      "id": "incremental_threat_model_update",
+      "input": "We're adding a new payment processing microservice to our existing architecture that already has a threat model. How do we update the threat model incrementally without starting from scratch?",
+      "context": "Existing STRIDE-A threat model in place, new Stripe integration via Azure Functions, PCI-DSS scope now expanded, no new trust boundaries yet analyzed"
+    }
+  ]
+}

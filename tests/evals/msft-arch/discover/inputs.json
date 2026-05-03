@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "greenfield_engagement",
+      "input": "We are a mid-size financial services company with 2,000 employees wanting to build a new client portal on Azure. We have M365 E3 licenses and no existing Azure footprint. Help us start this engagement.",
+      "context": "Financial services, UK-based, GDPR and FCA regulatory requirements, 6-month timeline to MVP"
+    },
+    {
+      "id": "migration_engagement",
+      "input": "We need to migrate our on-premises .NET applications to Azure. We have 15 applications running on Windows Server 2019 with SQL Server. The main driver is cost reduction and the end of Windows Server support.",
+      "context": "Manufacturing company, 500 employees, existing Azure AD for identity, no cloud experience in the team"
+    },
+    {
+      "id": "modernization_engagement",
+      "input": "Our D365 Customer Service implementation from 2019 needs modernization. We want to add omnichannel support, AI-powered case resolution, and integrate with our new IoT platform.",
+      "context": "Retail company, 50 contact center agents, Teams deployed, existing D365 CE on-premise version"
+    },
+    {
+      "id": "multi_geo_discovery",
+      "input": "We are expanding from the US to the EU and APAC. Our Azure workloads are currently US-only. We need to understand the compliance requirements and how to extend our architecture to support multi-geo.",
+      "context": "SaaS company, 5000 customers, GDPR for EU customers, data residency requirements per region"
+    },
+    {
+      "id": "discovery_output_structure",
+      "input": "I want to start an architecture engagement for a healthcare startup building a patient management system. The system will handle PHI and needs to comply with HIPAA. We're a team of 10 engineers.",
+      "context": "Healthcare startup, US-based, 10 engineers, greenfield project, Azure preferred, HIPAA required"
+    }
+  ]
+}

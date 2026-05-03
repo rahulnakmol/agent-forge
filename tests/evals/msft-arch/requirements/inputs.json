@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "functional_requirements_elicitation",
+      "input": "Gather requirements for a customer order tracking portal. Customers need to see order status, shipping updates, and invoice history. Customer service agents need to update order notes and escalate issues.",
+      "context": "B2C portal, 50,000 customers, 100 customer service agents, Azure stack, existing ERP system for order data"
+    },
+    {
+      "id": "nfr_targets",
+      "input": "We need to capture non-functional requirements for our new API platform. The product manager said 'it should be fast and highly available.' Help us turn this into concrete NFRs.",
+      "context": "Public-facing API, 10,000 concurrent users expected, financial services domain, 24/7 operations"
+    },
+    {
+      "id": "fit_gap_classification",
+      "input": "Classify these requirements against a D365 Customer Service implementation: (1) Standard case creation, (2) Custom approval workflow before case closure, (3) Real-time integration with our legacy billing system, (4) AI-powered suggested responses, (5) Custom mobile app for agents.",
+      "context": "D365 Customer Service licensed, Copilot for Service included, Azure available for custom development"
+    },
+    {
+      "id": "moscow_prioritization",
+      "input": "We have 30 requirements for our new product and the product manager has marked all of them as 'must have'. Help us apply MOSCOW prioritization. The key constraint is a 6-month delivery timeline with 5 developers.",
+      "context": "6-month timeline, 5 developers, cloud SaaS product, first version, stakeholder buy-in needed"
+    },
+    {
+      "id": "requirements_register_output",
+      "input": "Produce a complete requirements register for an employee expense management system. Employees submit expenses, managers approve, finance processes payments, and HR needs audit reports.",
+      "context": "Cloud-native solution, 1000 employees, 50 managers, GDPR compliance, integration with payroll system required"
+    }
+  ]
+}

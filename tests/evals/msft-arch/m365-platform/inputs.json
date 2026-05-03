@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "spfx_web_part",
+      "input": "We need to add a custom employee directory web part to our SharePoint intranet. Users should be able to search employees by name, department, and skill. The web part should use live HR data from our API.",
+      "context": "SharePoint Online, SPFx development, React preferred, custom REST API for HR data, Entra ID authentication required"
+    },
+    {
+      "id": "teams_app_design",
+      "input": "We want to build a Teams application for our help desk. It should have a tab showing open tickets, a bot that answers ticket status queries, and message extensions to create tickets from Teams messages.",
+      "context": "Microsoft Teams, GitHub for source control, Azure Bot Service for bot backend, ServiceNow as ticket system, Microsoft 365 Agents Toolkit"
+    },
+    {
+      "id": "adaptive_cards_outlook",
+      "input": "We want to send actionable email notifications from our approval system that work in both Outlook and Teams. Users should be able to approve or reject directly from the email without opening a separate app.",
+      "context": "Outlook and Teams, existing approval workflow API, bot backend required for Action.Execute, notification volume 500/day"
+    },
+    {
+      "id": "graph_connector_search",
+      "input": "We have a product catalog in our custom CMS that our employees need to search alongside their M365 content in Microsoft Search and Copilot. How do we surface this external content?",
+      "context": "Microsoft 365 E5, custom CMS with REST API, Graph Connector needed, Microsoft 365 Copilot licensed"
+    },
+    {
+      "id": "bundle_size_optimization",
+      "input": "Our SPFx web part bundle is 1.2MB gzipped and failing the performance budget. It uses React, Fluent UI, and a large third-party charting library. How do we bring it under the 500KB limit?",
+      "context": "SPFx 1.20, React 17, Fluent UI v9, Highcharts for charts, SharePoint Online deployment"
+    }
+  ]
+}

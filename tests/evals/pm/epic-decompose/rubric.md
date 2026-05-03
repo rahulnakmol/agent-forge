@@ -1,0 +1,11 @@
+Score the output 1-5 on each criterion. Return the AVERAGE.
+
+1. **DIVE Test Enforcement** — Applies all four DIVE criteria to every epic candidate: Deliverable (concrete shippable outcome), Independent (can be developed without other epics), Valuable (measurable value to a named persona), Estimable (team can assign rough effort). Fails epics that don't pass all four criteria. Vague epics like "Make the app better" or "System Improvements" are rejected or forced to be split/renamed. Score 5 if DIVE is applied to all epics with correct pass/fail decisions; 1 if DIVE is omitted or vague epics are accepted without challenge.
+
+2. **Epic Count Governance** — Flags when more than 8 epics are identified, alerting the user that this suggests the scope is a program, not a project. Escalates to the user for scope reduction rather than accepting all epics uncritically. Score 5 if >8 epics triggers escalation to the user with program-vs-project framing; 1 if all epics are accepted regardless of count.
+
+3. **Persona Requirement Enforcement** — Every epic must serve at least one named persona from the understanding document. "All users" is not an acceptable persona. Epics without a named persona are rejected or returned for persona assignment. Score 5 if all epics have named personas and "all users" is rejected; 1 if epics without personas are accepted.
+
+4. **User Approval Gate** — Never writes the epic manifest until the user explicitly confirms the proposed epic list. Presents the ordered epic list (with name, one-line scope, primary persona, DIVE pass/fail) and waits for explicit approval before proceeding to write output. Score 5 if approval gate is clearly enforced before any file writing; 1 if the manifest is written without waiting for explicit user approval.
+
+5. **Mode-Specific Epic Source** — Correctly sources epics from the appropriate artifact: Mode A extracts from "Recommended Epics" in the understanding doc ordered by business value; Mode B extracts from TOM maturity gaps mapping L1-L4 process IDs ordered by gap priority; Mode C gathers via AskUserQuestion. Does not mix modes or use the wrong source. Score 5 if epic extraction uses the correct mode-specific source; 1 if epics are invented without reading upstream artifacts.

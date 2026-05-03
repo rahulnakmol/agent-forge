@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "adr_workbook",
+      "input": "Generate an ADR workbook for a project choosing between Terraform and Bicep for IaC, and Azure SQL vs Cosmos DB for the data store.",
+      "context": "Enterprise Azure project, architecture decisions need formal documentation"
+    },
+    {
+      "id": "effort_estimation",
+      "input": "Create an effort estimation workbook for a Power Platform project with canvas app, Power Automate flows, Dataverse tables, and integration with SAP via custom connector.",
+      "context": "Mid-market client, 6-month implementation, mixed Power Platform and Azure"
+    },
+    {
+      "id": "raid_log",
+      "input": "Generate a RAID log for a D365 CE implementation. Key risks include data migration complexity, license availability, and integration with legacy CRM. Dependencies include SAP HR data and Azure AD.",
+      "context": "Enterprise D365 CE deployment, 12-month program"
+    },
+    {
+      "id": "test_strategy_workbook",
+      "input": "Create a test strategy workbook for a hybrid solution with Power Apps model-driven app, Azure Functions backend, and Azure SQL database.",
+      "context": "Financial services client, UAT sign-off required before go-live"
+    },
+    {
+      "id": "full_artifact_suite",
+      "input": "We're starting an architecture engagement for a new customer portal on Azure. We need all five standard workbooks: ADR, effort estimation, RAID log, solution design, and test strategy.",
+      "context": "Greenfield Azure project, public-facing portal, 500K users expected"
+    }
+  ]
+}

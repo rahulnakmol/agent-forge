@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "council_of_three_dispatch",
+      "input": "Validate the architecture artifacts for our new order management system. We have design.md, context.md, diagrams.md, api-contracts.md, and tasks.md ready for review.",
+      "context": "spec/design/ directory with all required artifacts, stack-select ADR completed, requirements document available, Azure stack, .NET 9"
+    },
+    {
+      "id": "completeness_audit",
+      "input": "Run a completeness audit on our architecture design. Check that all required sections exist and NFR targets are traceable from requirements through to the design.",
+      "context": "design.md with sections 1-7, NFRs defined in requirements doc, C4 diagrams present, API contracts for 3 endpoints, no test strategy section"
+    },
+    {
+      "id": "consistency_audit",
+      "input": "Check consistency across our architecture artifacts. We suspect the component names in the diagrams don't match the design doc, and some ADR decisions may conflict with the stack-select choice.",
+      "context": "Multiple artifacts: design.md, context.md, 5 ADRs, stack-select decision (Stack B), API contracts, sequence diagrams"
+    },
+    {
+      "id": "adversarial_review",
+      "input": "Apply an adversarial (skeptical-CTO) lens to our microservices architecture design. Challenge our assumptions on scale, security, cost, and operability.",
+      "context": "Microservices design for 10x current scale, Azure AKS, Cosmos DB, 5 services, STRIDE-A threat model not yet completed, cost model in design"
+    },
+    {
+      "id": "validation_report_synthesis",
+      "input": "Synthesize the findings from three auditors who reviewed our architecture artifacts. Completeness found 2 missing sections; Consistency found 1 conflicting ADR; Adversarial found 3 scalability concerns.",
+      "context": "All three auditor findings available, artifacts: design.md, api-contracts.md, 3 ADRs, stack-select decision"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "hld_generation",
+      "input": "Generate a High-Level Design document for our Azure microservices platform. We have an API Gateway, 5 microservices, Cosmos DB, Service Bus, and App Insights. The audience is our technical leadership team.",
+      "context": "Architecture decisions already made, C4 diagrams needed, WAF validation section required, output as Markdown"
+    },
+    {
+      "id": "lld_api_contracts",
+      "input": "Create a Low-Level Design document for our Order Management Service. Include component specifications, API contracts (REST endpoints), data models, and sequence diagrams for the order creation flow.",
+      "context": "ASP.NET Core Minimal API, EF Core with Azure SQL, already designed in azure-architect and dotnet-architect handoffs"
+    },
+    {
+      "id": "tech_design_spec",
+      "input": "Generate a tech-design-first specification (design.md) for a new feature: real-time inventory reservation during checkout. This touches the inventory service, payment service, and order service.",
+      "context": "Microservices architecture, distributed transactions, eventual consistency required, 99.9% availability target"
+    },
+    {
+      "id": "c4_diagram_quality",
+      "input": "Create C4 context and container diagrams for our identity platform. The system handles Entra ID integration, B2B guest access, and Managed Identity for workloads across 3 Azure subscriptions.",
+      "context": "Mermaid format required, follows C4 model conventions, identity architect handoff available"
+    },
+    {
+      "id": "live_architecture_diagram",
+      "input": "Generate a live architecture diagram from our resource group 'rg-prod-api'. Show all Azure resources and their connections including networking, compute, and data services.",
+      "context": "Existing Azure deployment, Reader access to resource group, az CLI available, output as Mermaid and SVG"
+    }
+  ]
+}

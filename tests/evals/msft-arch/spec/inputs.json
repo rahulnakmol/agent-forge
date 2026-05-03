@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "design_first_spec_generation",
+      "input": "Generate a tech spec for this user story: As a customer, I want to place an order online so that I can purchase products without visiting the store.",
+      "context": "E-commerce platform, .NET 9 API backend, Azure Cosmos DB, React frontend, Azure App Service, existing authentication via Entra ID"
+    },
+    {
+      "id": "c4_diagram_completeness",
+      "input": "Spec the notification service feature: the system should send email, SMS, and push notifications when order status changes. Include all required C4 diagrams.",
+      "context": "Microservices architecture, Azure Service Bus for messaging, Azure Communication Services for email/SMS, 100,000 daily users"
+    },
+    {
+      "id": "adr_generation",
+      "input": "We're adding a new payment processing capability. Generate the spec including architectural decision records for every significant technology choice.",
+      "context": "Azure-hosted SaaS, Stripe vs Azure Payment SDK decision needed, PCI-DSS scope, existing Cosmos DB and .NET stack"
+    },
+    {
+      "id": "functional_programming_business_logic",
+      "input": "Spec the discount calculation engine: apply promotional codes, tier-based discounts, and volume pricing rules to a shopping cart.",
+      "context": ".NET 9, functional programming paradigm required, Result<T> error handling, pure functions for business logic, DDD bounded context: pricing"
+    },
+    {
+      "id": "multi_story_epic_spec",
+      "input": "We have an epic: Employee Expense Management. Stories: (1) Submit expense claim, (2) Manager approval workflow, (3) Finance payment processing. Generate specs for all three stories.",
+      "context": "Cloud-native .NET solution, 1000 employees, D365 integration for payment, GDPR compliance, Azure Blob Storage for receipts"
+    }
+  ]
+}

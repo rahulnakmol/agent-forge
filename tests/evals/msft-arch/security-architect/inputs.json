@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "defender_plan_selection",
+      "input": "We have an Azure subscription with VMs, AKS clusters, Azure SQL databases, and App Services. Which Defender for Cloud plans should we enable and at what tier?",
+      "context": "Production environment, financial services, 50 VMs, 3 AKS clusters, 10 SQL databases, 5 App Service apps, compliance with PCI-DSS required"
+    },
+    {
+      "id": "key_vault_rbac_pattern",
+      "input": "Set up Azure Key Vault for our application. The app needs to read secrets, the CI/CD pipeline needs to write secrets, and only break-glass accounts should have full admin access. Currently we have inline secrets in app settings.",
+      "context": "Azure App Service, system-assigned Managed Identity, Azure DevOps for CI/CD, no existing Key Vault"
+    },
+    {
+      "id": "private_endpoint_network_security",
+      "input": "Our Azure SQL database, Storage account, and Key Vault are all accessible over the public internet. We need to restrict access to our production environment.",
+      "context": "Hub-spoke VNet topology, App Service in spoke VNet, all data services currently public, production workload"
+    },
+    {
+      "id": "supply_chain_sbom",
+      "input": "Our DevOps team asks: what security controls should we add to our CI/CD pipeline for our containerized .NET application? We currently have no secret scanning or supply chain security.",
+      "context": "GitHub Actions, Docker containers, Trivy not configured, no SBOM generation, no branch protection enabled"
+    },
+    {
+      "id": "owasp_design_time_mapping",
+      "input": "We're designing a new customer-facing web API. Walk us through applying OWASP Top 10 at design time.",
+      "context": "Azure App Service, .NET 9 API, Azure AD authentication, Cosmos DB backend, WAF not yet configured"
+    }
+  ]
+}

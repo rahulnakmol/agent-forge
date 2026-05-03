@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "canvas_vs_model_driven",
+      "input": "We need a mobile-friendly app for field inspectors to capture equipment readings, photos, and defect reports. Should we use Canvas Apps or Model-driven Apps?",
+      "context": "Power Apps licensed, equipment data in Dataverse, offline capability needed, 50 field inspectors on iOS and Android"
+    },
+    {
+      "id": "dataverse_security_design",
+      "input": "Design the security model for our Power Platform CRM. Sales reps should only see their accounts. Regional managers see their region's data. Directors see all. Some financial fields should only be visible to managers.",
+      "context": "Model-driven app on Dataverse, 3-tier sales hierarchy, 4 regions, 200 sales users, Power Apps per-app licensing"
+    },
+    {
+      "id": "dlp_policy_design",
+      "input": "We want to allow Power Automate to connect to SharePoint, Teams, and our approved internal API, but block connectors to social media, personal email, and unapproved third-party services. Design the DLP policy.",
+      "context": "Power Platform admin center access, M365 E3 licensing, 500 Power Automate users, some makers are citizen developers"
+    },
+    {
+      "id": "alm_pipeline_design",
+      "input": "Our Power Platform solutions are developed directly in production with no ALM pipeline. We need to implement proper dev/test/prod environment management with automated deployments.",
+      "context": "3 environments needed, Azure DevOps for CI/CD, managed solutions approach, 5 makers, Power Platform Pipelines or Azure Pipelines"
+    },
+    {
+      "id": "delegation_pattern",
+      "input": "Our Canvas App loads 10,000 account records into a collection to filter them. The app is very slow. How do we fix the data access pattern?",
+      "context": "Canvas App, Dataverse as data source, filter by region/account type/status, 10,000 records currently in collection"
+    }
+  ]
+}

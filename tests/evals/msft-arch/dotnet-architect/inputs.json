@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "minimal_api_design",
+      "input": "Design the API layer for a new order management microservice in .NET. We need REST endpoints for creating, updating, and querying orders. What's the recommended API surface and project structure?",
+      "context": "Greenfield microservice, net9.0 target, Azure Container Apps, EF Core for data access, Azure SQL backend"
+    },
+    {
+      "id": "result_type_error_handling",
+      "input": "Our .NET service currently throws exceptions for business validation (order not found, insufficient stock, duplicate order). How should we refactor to use proper error handling patterns?",
+      "context": ".NET 9 ASP.NET Core service, EF Core, currently using try/catch everywhere including controllers"
+    },
+    {
+      "id": "ef_core_optimization",
+      "input": "Our EF Core queries are slow on our high-traffic product search endpoint. We need to optimize for read-heavy workloads. What patterns should we apply?",
+      "context": ".NET 9, EF Core 9, Azure SQL, 1000 requests/minute on search endpoint, currently using tracked queries everywhere"
+    },
+    {
+      "id": "aspire_distributed_orchestration",
+      "input": "We're developing a distributed application with 4 services: API gateway, order service, inventory service, and notification service. How should we use .NET Aspire for local development?",
+      "context": "net9.0, all services are ASP.NET Core, Service Bus for messaging, Redis for caching, local development experience needed"
+    },
+    {
+      "id": "blazor_hosting_selection",
+      "input": "We need to build an internal admin dashboard for our operations team. About 200 users, internal network only, needs real-time updates for order status. Should we use Blazor Server or WASM?",
+      "context": ".NET 9, internal tool, Azure App Service hosting, real-time order status updates, 200 concurrent users max"
+    }
+  ]
+}

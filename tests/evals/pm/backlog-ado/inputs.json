@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "safe_field_mapping",
+      "input": "Export this backlog to Azure DevOps. We have 2 epics, 5 features, 15 user stories, 3 technical stories, 2 risks, and 1 impediment.",
+      "context": "Area Path: MyProject\\TeamA, Iteration: MyProject\\PI-4\\Sprint-, Priority defaults: Must Have = 1, SAFe process template in ADO"
+    },
+    {
+      "id": "work_item_type_schema",
+      "input": "Map these 7 work item types to their correct Azure DevOps SAFe fields: Epic, Feature, User Story, Technical User Story, Risk, Impediment, and CI Item.",
+      "context": "SAFe process template, ADO CSV import format, Risk Likelihood scale 1-5, Risk Impact scale A-E"
+    },
+    {
+      "id": "parent_child_row_ordering",
+      "input": "Generate the ADO import workbook with correct row ordering for hierarchy. We have 3 epics each with 2 features and 4 stories per feature.",
+      "context": "ADO CSV import requires parent rows before children, Epic > Feature > Story hierarchy, xlsx skill available"
+    },
+    {
+      "id": "acceptance_criteria_html",
+      "input": "Export user stories to ADO workbook. The acceptance criteria and descriptions need to be in the correct format for ADO import.",
+      "context": "ADO requires HTML-formatted description and acceptance criteria fields, 8 user stories with Given-When-Then acceptance criteria"
+    },
+    {
+      "id": "summary_artifact_generation",
+      "input": "After generating the ADO import workbook, what summary artifacts should be produced and what information should they contain?",
+      "context": "backlog-summary.md artifact, PRD reference, generation date, item counts by type, story point totals per epic, risk register summary"
+    }
+  ]
+}

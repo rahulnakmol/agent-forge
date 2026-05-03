@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "github_issue_creation_order",
+      "input": "Create GitHub issues from our authentication backlog. We have 2 epics, 4 features, and 12 user stories with parent-child relationships.",
+      "context": "Repository: acme-corp/platform-api, GitHub MCP server connected, milestone: v2.0, backlog file at project/specs/backlog/auth-backlog.md"
+    },
+    {
+      "id": "duplicate_check_cross_reference",
+      "input": "Before creating GitHub issues, check for existing issues in the repository to avoid duplicates.",
+      "context": "Repository has 45 open issues, backlog has 18 new items, some titles may overlap with existing work"
+    },
+    {
+      "id": "label_and_issue_type_mapping",
+      "input": "How should backlog work item types and priorities be mapped to GitHub issue labels and issue types?",
+      "context": "GitHub issue types available: Epic, Feature, Bug, Enhancement; priority labels: must/should/could; story points as labels"
+    },
+    {
+      "id": "sub_issue_hierarchy",
+      "input": "After creating parent issues for epics and features, establish the sub-issue hierarchy for child stories.",
+      "context": "Parent issue numbers captured from issue_write calls, 12 user stories need parent-child links via sub_issue_write"
+    },
+    {
+      "id": "verification_and_summary",
+      "input": "After creating all GitHub issues, how do we verify completeness and what summary information should be captured?",
+      "context": "Expected 20 issues created, search_issues for verification, backlog-summary.md update required with issue URLs"
+    }
+  ]
+}

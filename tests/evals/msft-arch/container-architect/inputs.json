@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "container_apps_vs_aks",
+      "input": "We have 6 stateless microservices with event-driven scaling needs and built-in DAPR support. Should we use Container Apps or AKS? What are the tradeoffs?",
+      "context": "Azure subscription, GitHub Actions for CI, team has moderate Kubernetes experience, no GPU workloads"
+    },
+    {
+      "id": "dapr_architecture",
+      "input": "Design a DAPR architecture for our microservices: order service, inventory service, notification service. Services need pub/sub and state management. What DAPR components should we use?",
+      "context": "Container Apps, Service Bus for messaging, Cosmos DB for state, Azure Key Vault for secrets"
+    },
+    {
+      "id": "gitops_flux_design",
+      "input": "We want GitOps-based deployments to AKS across dev, staging, and production. No manual kubectl in production. How should we structure our Flux setup?",
+      "context": "AKS cluster, GitHub repos, team uses Helm charts, promotion gates between environments required"
+    },
+    {
+      "id": "container_security",
+      "input": "Our container workloads need to meet strict security requirements: non-root containers, no secrets in images, network isolation between services, and vulnerability scanning in CI. How do we implement this?",
+      "context": "AKS, ACR, GitHub Actions, compliance requirements, Defender for Containers available"
+    },
+    {
+      "id": "waf_validation_containers",
+      "input": "Validate our Container Apps architecture against the Azure Well-Architected Framework. We have 4 container apps, DAPR enabled, Azure Monitor for logs, no pod disruption budgets defined yet.",
+      "context": "Production workload, 99.9% availability target, multi-AZ region"
+    }
+  ]
+}

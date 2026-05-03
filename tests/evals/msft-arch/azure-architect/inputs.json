@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "web_api_architecture",
+      "input": "Design an Azure architecture for a public REST API serving 10,000 requests per minute. The API reads from a SQL database and needs global reach with sub-200ms latency.",
+      "context": "Greenfield project, .NET backend team, multi-region required"
+    },
+    {
+      "id": "event_driven_architecture",
+      "input": "We need an event-driven architecture where order events from an e-commerce app trigger inventory updates, notification sends, and audit logging. All components are on Azure.",
+      "context": "High-volume retail platform, 500K orders per day peak"
+    },
+    {
+      "id": "hub_spoke_networking",
+      "input": "Design a hub-spoke network topology for a regulated financial services workload that needs private connectivity between 5 workload VNets, a shared firewall, and on-premises connectivity.",
+      "context": "Enterprise Azure landing zone, PCI-DSS compliance required"
+    },
+    {
+      "id": "microservices_service_selection",
+      "input": "We have 12 microservices. Some are CPU-intensive batch jobs, some are event-driven workers, and some are request-response APIs. What Azure compute services should we use for each type?",
+      "context": "Cloud-native startup, cost optimization important, team familiar with containers"
+    },
+    {
+      "id": "waf_validation",
+      "input": "Review this architecture: App Service (Standard S2) frontend, Azure Functions consumption plan for background jobs, Azure SQL Standard S3, no caching layer, no CDN, single region. What WAF concerns do you have?",
+      "context": "Current production architecture serving 50K daily users, SLA target 99.9%"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "opentelemetry_instrumentation",
+      "input": "We have 3 new ASP.NET Core services in .NET 9. We need to set up distributed tracing, structured logging, and metrics. What's the correct instrumentation approach?",
+      "context": "Azure App Service, App Insights in the same region, Log Analytics workspace available, production environment"
+    },
+    {
+      "id": "slo_driven_alerting",
+      "input": "We have a 99.9% availability SLO for our API. Our current alerts fire when error rate exceeds 1% for 5 minutes. We're getting alert fatigue from noise. How should we redesign our alerting?",
+      "context": "App Insights + Log Analytics, Azure Monitor, 28-day rolling window for SLO, PagerDuty for on-call"
+    },
+    {
+      "id": "aks_prometheus_monitoring",
+      "input": "We need to monitor our AKS cluster with Prometheus metrics: pod CPU/memory, HTTP request rates, and custom application metrics. What's the recommended setup for Azure?",
+      "context": "AKS cluster, Azure-managed Prometheus preferred, Grafana dashboards needed, OTel Collector sidecar pattern"
+    },
+    {
+      "id": "distributed_tracing_design",
+      "input": "We have 8 microservices communicating via HTTP and Azure Service Bus. Debugging issues requires tracing a request across multiple services. How do we implement distributed tracing?",
+      "context": "ASP.NET Core .NET 9 services, Azure Service Bus for async messaging, App Insights for telemetry, some services are Azure Functions"
+    },
+    {
+      "id": "log_analytics_workspace_design",
+      "input": "We have production, staging, and dev environments and need to decide how to organize our Log Analytics workspaces. We also need to manage ingestion costs for verbose debug logs.",
+      "context": "3 environments, compliance requires 2-year retention for production, debug logs are high volume, per-environment cost separation needed"
+    }
+  ]
+}

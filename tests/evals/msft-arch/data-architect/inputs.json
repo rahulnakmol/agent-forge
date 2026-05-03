@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "medallion_architecture",
+      "input": "Design a medallion architecture for our data platform. We ingest data from 5 source systems (CRM, ERP, IoT sensors, web clickstream, and a legacy database). Data scientists need clean datasets for ML, and business analysts need dashboards.",
+      "context": "Microsoft Fabric preferred, 2TB data today growing 50% annually, PII data from CRM, Power BI for business users"
+    },
+    {
+      "id": "fabric_vs_databricks",
+      "input": "We're choosing between Microsoft Fabric and Azure Databricks for our data platform. We have a large team of data scientists, use MLflow extensively, and need Unity Catalog. Which should we choose and why?",
+      "context": "200 data scientists, heavy ML workloads, already using Azure, Unity Catalog requirement, multi-cloud strategy in 2 years"
+    },
+    {
+      "id": "power_bi_direct_lake",
+      "input": "Our Power BI reports are slow because we use DirectQuery against our SQL data warehouse. We're moving to Fabric Lakehouse. How should we design our Power BI semantic model to use DirectLake?",
+      "context": "Microsoft Fabric Lakehouse with Delta Lake tables, 50 Power BI reports, 2000 business users, current DirectQuery latency 10+ seconds"
+    },
+    {
+      "id": "data_governance_purview",
+      "input": "We need to implement data governance across our Fabric data platform. We have PII, financial data, and public data. Regulators require data lineage and classification for all production datasets.",
+      "context": "Microsoft Fabric, Microsoft Purview available, GDPR and SOX compliance required, 50 datasets in production"
+    },
+    {
+      "id": "duckdb_embedded_analytics",
+      "input": "Our engineering team needs to run analytical queries locally against Parquet files from our Fabric lakehouse for development and testing. What's the right approach for local/embedded analytics?",
+      "context": "Developers use Python and .NET, Parquet files in Fabric OneLake, queries are analytical not transactional, laptop-based development"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "design_review_microservices",
+      "input": "Review this microservices design: we have 12 services all calling each other synchronously via REST, a shared database between 3 services, and a monolithic API gateway that handles auth, routing, and business logic. What's wrong and how do we fix it?",
+      "context": "Production system handling 50k requests/day, .NET 9 services, Azure App Service, Azure SQL, team of 15 developers"
+    },
+    {
+      "id": "how_to_build_event_sourcing",
+      "input": "How should we build an event-sourcing system for our order management domain? We need full audit trail, ability to replay events, and temporal queries on order state.",
+      "context": "Greenfield .NET 9, Azure Cosmos DB or Azure SQL for event store, 500k orders per day expected volume"
+    },
+    {
+      "id": "simplify_complex_architecture",
+      "input": "Our checkout flow involves 7 microservices, 3 message queues, 2 databases, and a saga orchestrator. Order completion takes 8 seconds. Simplify this architecture while maintaining reliability.",
+      "context": "ASP.NET Core, Azure Service Bus, Cosmos DB + Azure SQL, 99.9% availability required, 2-second response target"
+    },
+    {
+      "id": "aws_to_azure_redesign",
+      "input": "We're migrating from AWS to Azure. We use Lambda, SQS, DynamoDB, API Gateway, and S3. What's the Azure-native equivalent design with ADRs for each conversion decision?",
+      "context": "Serverless-first architecture on AWS, event-driven, moving to Azure, team has no Azure experience yet"
+    },
+    {
+      "id": "ai_agent_architecture",
+      "input": "Design an AI agent architecture for our customer support system. The agent should triage tickets, look up customer data, draft responses, and escalate complex cases to human agents. Include memory strategy and guardrails.",
+      "context": "Azure OpenAI, .NET 9, existing customer database in Azure SQL, Teams for human escalation, 1000 tickets per day"
+    }
+  ]
+}

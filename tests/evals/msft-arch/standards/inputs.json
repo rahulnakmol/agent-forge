@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "id": "preferred_stack_reference",
+      "input": "Which references should a .NET architect consult for coding standards and framework selection in this skill suite?",
+      "context": "msft-arch plugin, dotnet-architect skill, new engagement, need to know which standard references apply"
+    },
+    {
+      "id": "security_reference_routing",
+      "input": "A security architect needs to run a STRIDE-A threat model and check identity decisions. Which reference files should they load and in what order?",
+      "context": "msft-arch standards library, security-architect and threat-model skills, Azure workload with PII data"
+    },
+    {
+      "id": "diagram_standards_reference",
+      "input": "Which standards references govern C4 diagram generation and Mermaid process flow diagrams in this skill suite?",
+      "context": "spec skill, docs skill, need to produce C4 context/container/component diagrams and LLD process diagrams"
+    },
+    {
+      "id": "cross_skill_standards_consumption",
+      "input": "Which standards references are consumed by all specialist skills versus those specific to particular skill categories?",
+      "context": "msft-arch plugin overview, understanding shared vs domain-specific references"
+    },
+    {
+      "id": "finops_accessibility_references",
+      "input": "What reference files should the finops-architect and accessibility skills load? Are these shared or domain-specific?",
+      "context": "msft-arch standards library, finops-architect and accessibility skills"
+    }
+  ]
+}

@@ -10,6 +10,16 @@ from pathlib import Path
 
 import pytest
 
+
+def pytest_collection_modifyitems(config, items):
+    for item in items:
+        if "requires_anthropic_key" in item.keywords:
+            if not os.environ.get("ANTHROPIC_API_KEY"):
+                item.add_marker(pytest.mark.skip(reason="ANTHROPIC_API_KEY not set"))
+        if "requires_docker" in item.keywords:
+            if not shutil.which("docker"):
+                item.add_marker(pytest.mark.skip(reason="docker not available"))
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 

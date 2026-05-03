@@ -1,0 +1,11 @@
+Score the output 1-5 on each criterion. Return the AVERAGE.
+
+1. **Hierarchical Structure Enforcement** — Maintains the Epic > Feature > Story hierarchy throughout decomposition. Does not produce flat lists of stories. Groups stories under their parent Features, and Features under Epics. Prevents one giant epic with 30+ stories by decomposing into features of 3-8 stories each. Score 5 if hierarchy is maintained with proper parent-child grouping; 1 if stories are listed flat without epic/feature structure.
+
+2. **All 7 Work Item Types Captured** — Extracts all 7 types from the PRD: Epic (major capabilities), Feature (functional groups within epics), User Story (user-facing requirements in As-a/I-want/So-that format), Technical User Story (infrastructure/DevOps/security needs), Risk (with likelihood/impact assessment), Impediment (blockers with root cause and solutions), CI Item (tech debt/observability with expected benefit). Zero technical stories means information was dropped. Score 5 if all 7 types are correctly extracted with appropriate content; 1 if technical stories, risks, or other types are missing.
+
+3. **Acceptance Criteria Non-Negotiable** — Every user story and technical story has testable acceptance criteria. Stories without acceptance criteria are flagged as not implementable and blocked from the backlog. Does not accept any story without AC, regardless of stakeholder pressure. Score 5 if all stories have AC and the requirement is enforced without exceptions; 1 if stories without AC are accepted.
+
+4. **PRD Traceability** — Each backlog item traces back to its source PRD section. The output file includes traceability links (which PRD section each item comes from). Does not produce a backlog disconnected from the PRD. Score 5 if PRD traceability is included for all items; 1 if traceability links are missing.
+
+5. **Platform Handoff Routing** — After writing backlog file(s), asks user which target platform they need and correctly routes to: backlog-ado (Azure DevOps SAFe), backlog-linear (Linear), or backlog-github (GitHub Issues). Does not attempt to export directly without asking. Score 5 if platform routing question is asked and all three options are correctly described; 1 if platform handoff is skipped or incorrect exporter skills are named.

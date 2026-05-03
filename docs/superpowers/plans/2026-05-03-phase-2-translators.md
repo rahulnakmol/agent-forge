@@ -1,6 +1,6 @@
 # Phase 2 — All Translators Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Build all 10 translators that turn the canonical Claude Code-format plugins into the shape each target CLI expects. After Phase 2, the agent-forge repo contains committed Tier 1a manifests for Copilot/Codex/Cursor (mirroring Claude's), and the Python translator code can install plugins for any of the 12 v1.0 install targets.
 
@@ -35,7 +35,7 @@ Tasks in order: 1 → 2 → 3 → [Groups A + B + C + D fully in parallel] → 1
 - Create: `scripts/agent_forge/frontmatter.py`
 - Create: `tests/unit/test_frontmatter.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/test_frontmatter.py"""
@@ -72,7 +72,7 @@ def test_handles_lists_in_frontmatter() -> None:
     assert fm["tools"] == ["bash", "edit", "view"]
 ```
 
-- [ ] **Step 2: Run + expect failure**
+- [x] **Step 2: Run + expect failure**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -80,7 +80,7 @@ pytest tests/unit/test_frontmatter.py -v
 ```
 Expected: ImportError on `agent_forge.frontmatter`.
 
-- [ ] **Step 3: Implement `scripts/agent_forge/frontmatter.py`**
+- [x] **Step 3: Implement `scripts/agent_forge/frontmatter.py`**
 
 ```python
 """YAML frontmatter parsing and rendering for SKILL.md / agent .md files."""
@@ -108,7 +108,7 @@ def render_frontmatter(fm: dict, body: str) -> str:
     return f"---\n{yaml_block}\n---\n\n{body}"
 ```
 
-- [ ] **Step 4: Run + expect pass**
+- [x] **Step 4: Run + expect pass**
 
 ```bash
 pytest tests/unit/test_frontmatter.py -v
@@ -123,7 +123,7 @@ Expected: 4 passing.
 - Create: `scripts/agent_forge/canonical.py`
 - Create: `tests/unit/test_canonical.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/test_canonical.py"""
@@ -168,14 +168,14 @@ def test_canonical_skill_has_frontmatter() -> None:
     assert skills["humanize"].frontmatter["description"]
 ```
 
-- [ ] **Step 2: Run + expect failure**
+- [x] **Step 2: Run + expect failure**
 
 ```bash
 pytest tests/unit/test_canonical.py -v
 ```
 Expected: ImportError.
 
-- [ ] **Step 3: Implement `scripts/agent_forge/canonical.py`**
+- [x] **Step 3: Implement `scripts/agent_forge/canonical.py`**
 
 ```python
 """Read the canonical plugin tree under plugins/<name>/."""
@@ -296,7 +296,7 @@ def discover_plugins(plugins_dir: Path) -> list[CanonicalPlugin]:
     ]
 ```
 
-- [ ] **Step 4: Run + expect pass**
+- [x] **Step 4: Run + expect pass**
 
 ```bash
 pytest tests/unit/test_canonical.py -v
@@ -311,7 +311,7 @@ Expected: 4 passing.
 - Create: `scripts/agent_forge/translators/__init__.py` (replace stub)
 - Create: `tests/unit/test_translator_registry.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/test_translator_registry.py"""
@@ -341,14 +341,14 @@ def test_get_translator_raises_on_unknown() -> None:
         get_translator("nonexistent-cli")
 ```
 
-- [ ] **Step 2: Run + expect failure**
+- [x] **Step 2: Run + expect failure**
 
 ```bash
 pytest tests/unit/test_translator_registry.py -v
 ```
 Expected: ImportError.
 
-- [ ] **Step 3: Implement `scripts/agent_forge/translators/__init__.py`**
+- [x] **Step 3: Implement `scripts/agent_forge/translators/__init__.py`**
 
 ```python
 """Translator registry — every CLI's translator registers itself here."""
@@ -391,7 +391,7 @@ from agent_forge.translators import (  # noqa: E402,F401
 )
 ```
 
-- [ ] **Step 4: Run — still failing because translator modules don't exist yet**
+- [x] **Step 4: Run — still failing because translator modules don't exist yet**
 
 The test will fail until Tasks 4–13 land. Mark as expected and move on; CI catches re-run after all translators exist.
 
@@ -403,7 +403,7 @@ The test will fail until Tasks 4–13 land. Mark as expected and move on; CI cat
 - Create: `scripts/agent_forge/translators/claude_code.py`
 - Create: `tests/unit/translators/test_claude_code.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_claude_code.py"""
@@ -425,7 +425,7 @@ def test_claude_code_translate_skill_is_noop(tmp_path) -> None:
     assert not (tmp_path / "dst").exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/claude_code.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/claude_code.py`**
 
 ```python
 """Claude Code translator — mostly a no-op (canonical format)."""
@@ -467,7 +467,7 @@ class ClaudeCodeTranslator:
 register(ClaudeCodeTranslator())
 ```
 
-- [ ] **Step 3: Run + expect pass**
+- [x] **Step 3: Run + expect pass**
 
 ```bash
 pytest tests/unit/translators/test_claude_code.py -v
@@ -485,7 +485,7 @@ Expected: 2 passing.
 - Create: `plugins/<each>/plugin.json` (generated, committed)
 - Create: `plugins/<each>/agents/<name>.agent.md` (generated mirrors of `<name>.md`)
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_copilot_cli.py"""
@@ -555,13 +555,13 @@ def test_agent_mirror_filename(tmp_path: Path) -> None:
     assert (tmp_path / "agents" / "my-agent.agent.md").exists()
 ```
 
-- [ ] **Step 2: Run + expect failure (ImportError)**
+- [x] **Step 2: Run + expect failure (ImportError)**
 
 ```bash
 pytest tests/unit/translators/test_copilot_cli.py -v
 ```
 
-- [ ] **Step 3: Implement `scripts/agent_forge/translators/copilot_cli.py`**
+- [x] **Step 3: Implement `scripts/agent_forge/translators/copilot_cli.py`**
 
 ```python
 """GitHub Copilot CLI translator (Tier 1a — registry-style native marketplace).
@@ -654,14 +654,14 @@ class CopilotCliTranslator:
 register(CopilotCliTranslator())
 ```
 
-- [ ] **Step 4: Run + expect pass**
+- [x] **Step 4: Run + expect pass**
 
 ```bash
 pytest tests/unit/translators/test_copilot_cli.py -v
 ```
 Expected: 5 passing.
 
-- [ ] **Step 5: Generate the actual committed artifacts**
+- [x] **Step 5: Generate the actual committed artifacts**
 
 Add a one-shot generator script `scripts/regenerate-tier1-artifacts.py` (used by CI to detect drift):
 
@@ -741,7 +741,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 6: Run the generator**
+- [x] **Step 6: Run the generator**
 
 ```bash
 python scripts/regenerate-tier1-artifacts.py
@@ -763,7 +763,7 @@ Expected: marketplace.json + 4 plugin.json files + .agent.md mirrors created.
 - Create: `plugins/<each>/agents/<name>.toml` (generated for each agent)
 - Update: `scripts/regenerate-tier1-artifacts.py` to also handle Codex
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_codex_cli.py"""
@@ -849,7 +849,7 @@ def test_translate_command_is_noop(tmp_path: Path) -> None:
     assert not dst.exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/codex_cli.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/codex_cli.py`**
 
 ```python
 """OpenAI Codex CLI translator (Tier 1a — registry-style native marketplace).
@@ -950,7 +950,7 @@ class CodexCliTranslator:
 register(CodexCliTranslator())
 ```
 
-- [ ] **Step 3: Update `scripts/regenerate-tier1-artifacts.py` to handle Codex**
+- [x] **Step 3: Update `scripts/regenerate-tier1-artifacts.py` to handle Codex**
 
 Add to that script (after `regenerate_copilot`):
 
@@ -1005,7 +1005,7 @@ drifted = regenerate_copilot(args.check) or drifted
 drifted = regenerate_codex(args.check) or drifted
 ```
 
-- [ ] **Step 4: Run + verify**
+- [x] **Step 4: Run + verify**
 
 ```bash
 pytest tests/unit/translators/test_codex_cli.py -v
@@ -1024,7 +1024,7 @@ Expected: tests pass; files generated.
 - Create: `.cursor-plugin/marketplace.json` (generated)
 - Create: `plugins/<each>/.cursor-plugin/plugin.json` (generated)
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_cursor.py"""
@@ -1064,7 +1064,7 @@ def test_cursor_plugin_json_minimal() -> None:
     assert pj["name"] == "writing"
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/cursor.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/cursor.py`**
 
 ```python
 """Cursor translator (Tier 1a — registry-style native marketplace).
@@ -1139,11 +1139,11 @@ class CursorTranslator:
 register(CursorTranslator())
 ```
 
-- [ ] **Step 3: Update `scripts/regenerate-tier1-artifacts.py` to handle Cursor**
+- [x] **Step 3: Update `scripts/regenerate-tier1-artifacts.py` to handle Cursor**
 
 Add `regenerate_cursor` mirroring `regenerate_copilot`/`regenerate_codex`. Wire into `main()`.
 
-- [ ] **Step 4: Run**
+- [x] **Step 4: Run**
 
 ```bash
 pytest tests/unit/translators/test_cursor.py -v
@@ -1158,7 +1158,7 @@ python scripts/regenerate-tier1-artifacts.py
 - Create: `scripts/agent_forge/translators/amp.py`
 - Create: `tests/unit/translators/test_amp.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_amp.py"""
@@ -1188,7 +1188,7 @@ def test_amp_translate_skill_is_noop(tmp_path: Path) -> None:
     assert not (tmp_path / "dst").exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/amp.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/amp.py`**
 
 ```python
 """Sourcegraph Amp translator (Tier 1b — git-URL native install).
@@ -1241,7 +1241,7 @@ class AmpTranslator:
 register(AmpTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_amp.py -v
@@ -1255,7 +1255,7 @@ pytest tests/unit/translators/test_amp.py -v
 - Create: `scripts/agent_forge/translators/gemini_cli.py`
 - Create: `tests/unit/translators/test_gemini_cli.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_gemini_cli.py"""
@@ -1275,7 +1275,7 @@ def test_gemini_install_command() -> None:
     assert "rahulnakmol/agent-forge" in cmd
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/gemini_cli.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/gemini_cli.py`**
 
 ```python
 """Google Gemini CLI translator (Tier 1b — git-URL native install).
@@ -1320,7 +1320,7 @@ class GeminiCliTranslator:
 register(GeminiCliTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_gemini_cli.py -v
@@ -1334,7 +1334,7 @@ pytest tests/unit/translators/test_gemini_cli.py -v
 - Create: `scripts/agent_forge/translators/kilocode.py`
 - Create: `tests/unit/translators/test_kilocode.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_kilocode.py"""
@@ -1370,7 +1370,7 @@ def test_translate_skill_copies_directory(ephemeral_home: Path) -> None:
     assert (dest / "SKILL.md").exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/kilocode.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/kilocode.py`**
 
 ```python
 """Kilo Code translator (Tier 2 — trivial adapter).
@@ -1432,7 +1432,7 @@ class KilocodeTranslator:
 register(KilocodeTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_kilocode.py -v
@@ -1446,7 +1446,7 @@ pytest tests/unit/translators/test_kilocode.py -v
 - Create: `scripts/agent_forge/translators/opencode.py`
 - Create: `tests/unit/translators/test_opencode.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_opencode.py"""
@@ -1471,7 +1471,7 @@ def test_translate_skill_copies(ephemeral_home: Path) -> None:
     assert (dest / "SKILL.md").exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/opencode.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/opencode.py`**
 
 ```python
 """OpenCode translator (Tier 2 — trivial adapter).
@@ -1529,7 +1529,7 @@ class OpencodeTranslator:
 register(OpencodeTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_opencode.py -v
@@ -1543,7 +1543,7 @@ pytest tests/unit/translators/test_opencode.py -v
 - Create: `scripts/agent_forge/translators/crush.py`
 - Create: `tests/unit/translators/test_crush.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_crush.py"""
@@ -1568,7 +1568,7 @@ def test_translate_skill_copies(ephemeral_home: Path) -> None:
     assert (dest / "SKILL.md").exists()
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/crush.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/crush.py`**
 
 ```python
 """Crush translator (Tier 2 — trivial adapter).
@@ -1627,7 +1627,7 @@ class CrushTranslator:
 register(CrushTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_crush.py -v
@@ -1641,7 +1641,7 @@ pytest tests/unit/translators/test_crush.py -v
 - Create: `scripts/agent_forge/translators/prompt_loader.py`
 - Create: `tests/unit/translators/test_prompt_loader.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 """tests/unit/translators/test_prompt_loader.py"""
@@ -1693,7 +1693,7 @@ def test_loader_instructs_lazy_reference_loading() -> None:
     assert "Do NOT eagerly fetch references" in loader
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/translators/prompt_loader.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/translators/prompt_loader.py`**
 
 ```python
 """Tier 3 prompt-loader generator for Perplexity Spaces, ChatGPT custom GPTs,
@@ -1786,7 +1786,7 @@ class PromptLoaderTranslator:
 register(PromptLoaderTranslator())
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/translators/test_prompt_loader.py -v
@@ -1799,7 +1799,7 @@ pytest tests/unit/translators/test_prompt_loader.py -v
 **Files:**
 - Create: `tests/unit/test_tier1_artifacts_sync.py`
 
-- [ ] **Step 1: Write the test**
+- [x] **Step 1: Write the test**
 
 ```python
 """Verify all Tier 1a generated artifacts are in sync with the canonical source.
@@ -1828,7 +1828,7 @@ def test_tier1_artifacts_in_sync() -> None:
     )
 ```
 
-- [ ] **Step 2: Run**
+- [x] **Step 2: Run**
 
 ```bash
 pytest tests/unit/test_tier1_artifacts_sync.py -v
@@ -1839,7 +1839,7 @@ Expected: pass (artifacts are fresh from Tasks 5–7).
 
 ## Task 15: Smoke test all 10 translators + commit
 
-- [ ] **Step 1: Verify all translators load**
+- [x] **Step 1: Verify all translators load**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -1847,7 +1847,7 @@ python -c "from agent_forge.translators import registered_translators; print(reg
 ```
 Expected: `['amp', 'claude-code', 'codex-cli', 'copilot-cli', 'crush', 'cursor', 'gemini-cli', 'kilocode', 'opencode', 'prompt-loader']`
 
-- [ ] **Step 2: Run all translator tests**
+- [x] **Step 2: Run all translator tests**
 
 ```bash
 pytest tests/unit/translators -v
@@ -1855,14 +1855,14 @@ pytest tests/unit/test_tier1_artifacts_sync.py -v
 ```
 Expected: all pass.
 
-- [ ] **Step 3: Run the full Layer A suite to make sure nothing regressed**
+- [x] **Step 3: Run the full Layer A suite to make sure nothing regressed**
 
 ```bash
 pytest tests/unit -v
 ```
 Expected: 100% pass.
 
-- [ ] **Step 4: Stage + commit**
+- [x] **Step 4: Stage + commit**
 
 ```bash
 git add scripts/agent_forge/ scripts/regenerate-tier1-artifacts.py tests/unit/ .github/plugin/ .codex-plugin/ .cursor-plugin/ plugins/*/plugin.json plugins/*/.codex-plugin/ plugins/*/.cursor-plugin/ plugins/*/agents/*.agent.md plugins/*/agents/*.toml
@@ -1899,9 +1899,9 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
 
 ## Self-Review
 
-- [ ] Spec coverage: D11 (all 10 translators) ✓; CI invariants 2-4 (manifests in sync) ✓; Translator Protocol contract ✓
-- [ ] Placeholder scan: no TBD; every translator has minimal-but-complete implementation; spike resolutions inlined (Copilot uses copy not symlink for cross-platform safety)
-- [ ] Type consistency: `CanonicalPlugin`, `CanonicalSkill` used uniformly; `register()` and `get_translator()` signature match across all 10 modules
-- [ ] No test references functions/classes not defined in earlier tasks ✓
+- [x] Spec coverage: D11 (all 10 translators) ✓; CI invariants 2-4 (manifests in sync) ✓; Translator Protocol contract ✓
+- [x] Placeholder scan: no TBD; every translator has minimal-but-complete implementation; spike resolutions inlined (Copilot uses copy not symlink for cross-platform safety)
+- [x] Type consistency: `CanonicalPlugin`, `CanonicalSkill` used uniformly; `register()` and `get_translator()` signature match across all 10 modules
+- [x] No test references functions/classes not defined in earlier tasks ✓
 
 **Done criteria:** All 10 translators registered + tested; all Tier 1a artifacts generated + committed; sync invariant test passing; full `pytest tests/unit` green.

@@ -23,6 +23,7 @@ jobs:
       - name: Build distribution
         run: python -m build scripts/agent_forge
       - name: Publish to PyPI (trusted publisher)
+        continue-on-error: true
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: scripts/agent_forge/dist/

@@ -1,6 +1,6 @@
 # Phase 3 — Full agent-forge CLI Surface Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Replace the Phase 0 `hello` stub with the full v1.0.0 CLI surface — 11 commands (`list`, `available`, `detect`, `install`, `update`, `pin`, `unpin`, `sync`, `remove`, `history`, `doctor`) — backed by a thread-safe local manifest and dispatched through the translator registry from Phase 2.
 
@@ -31,7 +31,7 @@ Recommended dispatch: 5 parallel subagents for Group A, then 6 parallel for Grou
 - Create: `scripts/agent_forge/manifest.py`
 - Create: `tests/unit/test_manifest.py`
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 ```python
 """tests/unit/test_manifest.py"""
@@ -120,7 +120,7 @@ def test_id_format() -> None:
     assert install.scope == "skill"
 ```
 
-- [ ] **Step 2: Implement `scripts/agent_forge/manifest.py`**
+- [x] **Step 2: Implement `scripts/agent_forge/manifest.py`**
 
 ```python
 """Local manifest at ~/.agent-forge/manifest.json — single source of state for installs."""
@@ -208,7 +208,7 @@ class ManifestStore:
         )
 ```
 
-- [ ] **Step 3: Run + expect pass**
+- [x] **Step 3: Run + expect pass**
 
 ```bash
 pytest tests/unit/test_manifest.py -v
@@ -223,7 +223,7 @@ Expected: 4 passing.
 - Create: `scripts/agent_forge/detectors.py`
 - Create: `tests/unit/test_detectors.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/test_detectors.py"""
@@ -242,7 +242,7 @@ def test_returns_dict_of_translator_to_bool() -> None:
     assert all(isinstance(v, bool) for v in detected.values())
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```python
 """scripts/agent_forge/detectors.py"""
@@ -264,7 +264,7 @@ def detect_all_clis() -> dict[str, bool]:
     return result
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/test_detectors.py -v
@@ -278,7 +278,7 @@ pytest tests/unit/test_detectors.py -v
 - Create: `scripts/agent_forge/github.py`
 - Create: `tests/unit/test_github.py`
 
-- [ ] **Step 1: Test (mocking httpx)**
+- [x] **Step 1: Test (mocking httpx)**
 
 ```python
 """tests/unit/test_github.py"""
@@ -308,7 +308,7 @@ def test_resolve_plugin_sha_uses_commits_api() -> None:
         assert kwargs["params"]["sha"] == "main"
 ```
 
-- [ ] **Step 2: Implement**
+- [x] **Step 2: Implement**
 
 ```python
 """scripts/agent_forge/github.py — minimal GitHub API client (no full clone)."""
@@ -348,7 +348,7 @@ def fetch_plugin_tarball(repo: str, sha: str, dest: str) -> None:
         tf.extractall(dest)
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/test_github.py -v
@@ -362,7 +362,7 @@ pytest tests/unit/test_github.py -v
 - Modify: `scripts/agent_forge/cli.py` (replace `hello` with real commands)
 - Create: `tests/unit/cli/test_list.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/cli/test_list.py"""
@@ -400,7 +400,7 @@ def test_list_with_installs(tmp_path: Path, monkeypatch) -> None:
     assert "abc123" in result.output
 ```
 
-- [ ] **Step 2: Replace `cli.py`**
+- [x] **Step 2: Replace `cli.py`**
 
 ```python
 """agent-forge CLI entry point — full v1.0 surface."""
@@ -457,7 +457,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_list.py -v
@@ -471,7 +471,7 @@ pytest tests/unit/cli/test_list.py -v
 - Modify: `scripts/agent_forge/cli.py`
 - Create: `tests/unit/cli/test_available.py`
 
-- [ ] **Step 1: Test**
+- [x] **Step 1: Test**
 
 ```python
 """tests/unit/cli/test_available.py"""
@@ -488,7 +488,7 @@ def test_available_lists_all_canonical_plugins() -> None:
         assert plugin in result.output
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("available")
@@ -505,7 +505,7 @@ def cmd_available(cli: str | None) -> None:
         click.echo(f"  {p.name}  —  {p.manifest.get('description', '')[:80]}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_available.py -v
@@ -515,7 +515,7 @@ pytest tests/unit/cli/test_available.py -v
 
 ## Task 6: Implement `agent-forge detect` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_detect.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_detect.py`)
 
 ```python
 from click.testing import CliRunner
@@ -530,7 +530,7 @@ def test_detect_outputs_each_cli() -> None:
         assert cli in result.output
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("detect")
@@ -543,7 +543,7 @@ def cmd_detect() -> None:
         click.echo(f"  [{marker}] {name}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_detect.py -v
@@ -557,7 +557,7 @@ pytest tests/unit/cli/test_detect.py -v
 - Modify: `scripts/agent_forge/cli.py`
 - Create: `tests/unit/cli/test_install.py`
 
-- [ ] **Step 1: Test** (uses ephemeral_home fixture)
+- [x] **Step 1: Test** (uses ephemeral_home fixture)
 
 ```python
 from click.testing import CliRunner
@@ -573,7 +573,7 @@ def test_install_writing_for_kilocode(ephemeral_home, monkeypatch, tmp_path) -> 
     assert (ephemeral_home / ".claude/skills/writing/humanize/SKILL.md").exists()
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("install")
@@ -634,7 +634,7 @@ def cmd_install(install_id: str, tier: str, tag: str | None) -> None:
     click.echo(f"Installed {install_id} for {tier}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_install.py -v
@@ -644,7 +644,7 @@ pytest tests/unit/cli/test_install.py -v
 
 ## Task 8: Implement `agent-forge update` (PARALLEL)
 
-- [ ] **Step 1: Test** (use mocked github)
+- [x] **Step 1: Test** (use mocked github)
 
 ```python
 """tests/unit/cli/test_update.py"""
@@ -692,7 +692,7 @@ def test_update_skips_pinned(tmp_path: Path, monkeypatch) -> None:
     assert "pinned" in result.output.lower()
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("update")
@@ -733,7 +733,7 @@ def cmd_update(install_id: str | None, check: bool) -> None:
         store.save(m)
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_update.py -v
@@ -743,7 +743,7 @@ pytest tests/unit/cli/test_update.py -v
 
 ## Task 9: Implement `agent-forge pin` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_pin.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_pin.py`)
 
 ```python
 from datetime import datetime, timezone
@@ -771,7 +771,7 @@ def test_pin_sets_pinned_flag(tmp_path: Path, monkeypatch) -> None:
     assert m.installs[0].pin_target == "v1.0.0"
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("pin")
@@ -811,7 +811,7 @@ def cmd_unpin(install_id: str) -> None:
     click.echo(f"Unpinned {install_id}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_pin.py -v
@@ -827,7 +827,7 @@ pytest tests/unit/cli/test_pin.py -v
 
 ## Task 11: Implement `agent-forge remove` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_remove.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_remove.py`)
 
 ```python
 def test_remove_deletes_files_and_record(tmp_path, monkeypatch) -> None:
@@ -855,7 +855,7 @@ def test_remove_deletes_files_and_record(tmp_path, monkeypatch) -> None:
     assert not m.installs
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("remove")
@@ -880,7 +880,7 @@ def cmd_remove(install_id: str) -> None:
     click.echo(f"Removed {install_id}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_remove.py -v
@@ -890,7 +890,7 @@ pytest tests/unit/cli/test_remove.py -v
 
 ## Task 12: Implement `agent-forge history` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_history.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_history.py`)
 
 ```python
 def test_history_lists_log_entries(tmp_path, monkeypatch) -> None:
@@ -911,7 +911,7 @@ def test_history_lists_log_entries(tmp_path, monkeypatch) -> None:
     assert "x@kilocode" in result.output
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("history")
@@ -930,7 +930,7 @@ def cmd_history(install_id: str | None) -> None:
         click.echo(f"  {e.ts.isoformat()}  {e.op:<8}  {e.id}")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_history.py -v
@@ -940,7 +940,7 @@ pytest tests/unit/cli/test_history.py -v
 
 ## Task 13: Implement `agent-forge doctor` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_doctor.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_doctor.py`)
 
 ```python
 def test_doctor_detects_missing_files(tmp_path, monkeypatch) -> None:
@@ -962,7 +962,7 @@ def test_doctor_detects_missing_files(tmp_path, monkeypatch) -> None:
     assert "missing" in result.output.lower()
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("doctor")
@@ -983,7 +983,7 @@ def cmd_doctor() -> None:
         raise SystemExit(1)
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_doctor.py -v
@@ -993,7 +993,7 @@ pytest tests/unit/cli/test_doctor.py -v
 
 ## Task 14: Implement `agent-forge sync` (PARALLEL)
 
-- [ ] **Step 1: Test** (`tests/unit/cli/test_sync.py`)
+- [x] **Step 1: Test** (`tests/unit/cli/test_sync.py`)
 
 ```python
 def test_sync_reinstalls_all(tmp_path, monkeypatch, ephemeral_home) -> None:
@@ -1014,7 +1014,7 @@ def test_sync_reinstalls_all(tmp_path, monkeypatch, ephemeral_home) -> None:
     assert result.exit_code == 0
 ```
 
-- [ ] **Step 2: Add to `cli.py`**
+- [x] **Step 2: Add to `cli.py`**
 
 ```python
 @main.command("sync")
@@ -1034,7 +1034,7 @@ def cmd_sync() -> None:
     click.echo(f"Synced {len(m.installs)} installs.")
 ```
 
-- [ ] **Step 3: Run**
+- [x] **Step 3: Run**
 
 ```bash
 pytest tests/unit/cli/test_sync.py -v
@@ -1044,7 +1044,7 @@ pytest tests/unit/cli/test_sync.py -v
 
 ## Task 15: Smoke + commit
 
-- [ ] **Step 1: Verify all 11 commands resolve**
+- [x] **Step 1: Verify all 11 commands resolve**
 
 ```bash
 cd /Users/rahulnakmol/Developer/Github/agent-forge
@@ -1052,14 +1052,14 @@ agent-forge --help
 ```
 Expected: lists 11 commands plus `--version`/`--help`.
 
-- [ ] **Step 2: Run full unit suite**
+- [x] **Step 2: Run full unit suite**
 
 ```bash
 pytest tests/unit -v
 ```
 Expected: 100% pass.
 
-- [ ] **Step 3: Stage + commit**
+- [x] **Step 3: Stage + commit**
 
 ```bash
 git add scripts/agent_forge/manifest.py scripts/agent_forge/detectors.py scripts/agent_forge/github.py scripts/agent_forge/cli.py tests/unit/test_manifest.py tests/unit/test_detectors.py tests/unit/test_github.py tests/unit/cli/
@@ -1086,9 +1086,9 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
 
 ## Self-Review
 
-- [ ] Every command from spec Section 5 implemented ✓
-- [ ] Manifest schema matches Section 5 spec exactly (pydantic enforces) ✓
-- [ ] File locking serializes concurrent writes (tested) ✓
-- [ ] Soft-nudge implemented per spec ✓
+- [x] Every command from spec Section 5 implemented ✓
+- [x] Manifest schema matches Section 5 spec exactly (pydantic enforces) ✓
+- [x] File locking serializes concurrent writes (tested) ✓
+- [x] Soft-nudge implemented per spec ✓
 
 **Done criteria:** `agent-forge --help` shows 11 commands; full test suite green; manifest round-trips correctly.
